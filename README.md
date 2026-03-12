@@ -55,7 +55,7 @@ python solver-a278299.py --n 12 --verbose
 python solver-a278299.py --n 2-17 --json results.json --log run.log
 ```
 
-The solver matches the known OEIS DATA values for a(2) through a(11), originally proved by prior authors. For n >= 12, the solver finds constructive upper bounds via simulated annealing with Numba JIT compilation.
+The solver matches the known OEIS DATA values for a(2) through a(11). For n >= 12, the solver finds constructive upper bounds via simulated annealing with Numba JIT compilation.
 
 ## Files
 
@@ -69,9 +69,7 @@ The solver matches the known OEIS DATA values for a(2) through a(11), originally
 
 ## Prior Art
 
-Known terms a(2) through a(11) were found by Alec Jones, Peter Kagey, and Ryan Lee using a [JavaScript puzzle game](https://peterkagey.com/apps/square_games) created by Peter Kagey.
-
-No automated solver had previously been applied to this sequence.
+Known terms a(2) through a(11) were found by Alec Jones, Peter Kagey, and Ryan Lee.
 
 ## Hardware
 
