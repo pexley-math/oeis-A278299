@@ -1,5 +1,7 @@
 # OEIS A278299 -- Smallest Complete Polyomino Coloring
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18977761.svg)](https://doi.org/10.5281/zenodo.18977761)
+
 **Sequence:** [A278299](https://oeis.org/A278299)
 
 a(n) = the smallest number of cells in a connected polyomino that can be colored with exactly n colors such that every pair of colors shares at least one edge.
