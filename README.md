@@ -8,16 +8,16 @@ a(n) = the smallest number of cells in a connected polyomino that can be colored
 
 | n | a(n) | Status |
 |---|------|--------|
-| 2 | 2 | Proved (prior authors) |
-| 3 | 4 | Proved (prior authors) |
-| 4 | 6 | Proved (prior authors) |
-| 5 | 9 | Proved (prior authors) |
-| 6 | 12 | Proved (prior authors) |
-| 7 | 15 | Proved (prior authors) |
-| 8 | 19 | Proved (prior authors) |
-| 9 | 24 | Proved (prior authors) |
-| 10 | 30 | Proved (prior authors) |
-| 11 | 34 | Proved (prior authors) |
+| 2 | 2 | OEIS DATA |
+| 3 | 4 | OEIS DATA |
+| 4 | 6 | OEIS DATA |
+| 5 | 9 | OEIS DATA |
+| 6 | 12 | OEIS DATA |
+| 7 | 15 | OEIS DATA |
+| 8 | 19 | OEIS DATA |
+| 9 | 24 | OEIS DATA |
+| 10 | 30 | OEIS DATA |
+| 11 | 34 | OEIS DATA |
 
 ## Upper Bounds (this work)
 
