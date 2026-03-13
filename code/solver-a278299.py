@@ -1225,6 +1225,10 @@ def main():
 
     print()
 
+    if args.log:
+        sys.stdout = sys.__stdout__
+        log_file.close()
+
 
 def parse_n_arg(s):
     """Parse --n argument: '12', '5-11', '2,5,10', '2-5,12-17'."""
