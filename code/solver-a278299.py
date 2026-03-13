@@ -12,9 +12,8 @@ Method: Numba JIT-compiled simulated annealing with adaptive move selection
 and fresh diverse starts. For each n, the solver searches across multiple
 grid dimensions and random seeds to find the smallest valid polyomino.
 
-The solver matches the known values for a(2) through a(11) (proved by
-prior authors). For n >= 12, the values are constructive upper bounds
-(not proved optimal).
+The solver matches prior authors' DATA values for a(2) through a(11).
+For n >= 12, the values are constructive upper bounds (not proved optimal).
 
 Requirements: Python 3.8+, numpy, numba
 Install:      pip install numpy numba
@@ -986,7 +985,7 @@ def get_bounding_box(coloring):
 # ---------------------------------------------------------------------------
 
 def solve_n(n, verbose=False):
-    """Solve for a single n. Returns (best_size, best_coloring, elapsed)."""
+    """Solve for a single n. Returns (best_size, best_coloring, elapsed, seeds_info)."""
     total_pairs = n * (n - 1) // 2
     target, grids, seeds_per_grid, steps, T_start, T_end = get_solver_params(n)
     n_cores = min(os.cpu_count() or 4, 10)
@@ -1000,20 +999,19 @@ def solve_n(n, verbose=False):
     else:
         expect_str = f"estimated target = {target}"
 
-    print(f"\n  Solving n = {n}: {total_pairs} pairs needed, {expect_str}")
-    print(f"    Testing {len(grids)} grid sizes x {seeds_per_grid} seeds, "
-          f"{steps/1e6:.0f}M steps each")
+    total_seeds = len(grids) * seeds_per_grid
+    print(f"    {total_pairs} pairs needed, {expect_str}")
+    print(f"    Grid sweep: {len(grids)} sizes x {seeds_per_grid} seeds, "
+          f"{steps/1e6:.0f}M steps each ({n_cores} parallel workers)")
 
     global_best_size = 9999
     global_best = None
     t0 = time.time()
 
     for gi, (rows, cols_g) in enumerate(grids):
-        if global_best_size <= target:
-            break
-
-        if verbose:
-            print(f"    Grid {rows} X {cols_g} ({gi+1}/{len(grids)})...")
+        grid_t0 = time.time()
+        grid_best = 9999
+        grid_valid = 0
 
         greedy_args = [
             (seed * 31337 + rows * 997 + cols_g * 127 + n * 7,
@@ -1024,25 +1022,42 @@ def solve_n(n, verbose=False):
         with Pool(n_cores) as pool:
             for seed, r, c, size, result, stp in pool.imap_unordered(
                     worker_greedy_anneal, greedy_args):
-                if result and size < global_best_size:
-                    global_best_size = size
-                    global_best = dict(result)
-                    elapsed = time.time() - t0
-                    if verbose:
-                        from collections import Counter
-                        dist = sorted(Counter(result.values()).values())
-                        print(f"      [{r} X {c} s{seed}] NEW BEST: {size} cells "
-                              f"@ step {stp}, dist={dist} [{elapsed:.1f}s]")
-                    if size <= target:
-                        pool.terminate()
-                        break
+                if result and size < 9999:
+                    grid_valid += 1
+                    if size < grid_best:
+                        grid_best = size
+                    if size < global_best_size:
+                        global_best_size = size
+                        global_best = dict(result)
+                        if verbose:
+                            from collections import Counter
+                            dist = sorted(Counter(result.values()).values())
+                            print(f"        [{r} X {c} s{seed}] NEW BEST: "
+                                  f"{size} cells @ step {stp}, "
+                                  f"dist={dist}")
 
-        if verbose:
-            elapsed = time.time() - t0
-            print(f"    Grid done: best={global_best_size} [{elapsed:.1f}s]")
+        grid_elapsed = time.time() - grid_t0
+        if grid_valid > 0:
+            marker = ""
+            if grid_best <= target:
+                marker = "  <-- target matched"
+            print(f"      {rows} X {cols_g}: "
+                  f"{grid_valid}/{seeds_per_grid} seeds, "
+                  f"best = {grid_best}{marker}  [{grid_elapsed:.1f}s]")
+        else:
+            print(f"      {rows} X {cols_g}: "
+                  f"no valid coloring  [{grid_elapsed:.1f}s]")
 
     elapsed = time.time() - t0
-    return global_best_size, global_best, elapsed
+
+    if global_best_size < 9999:
+        print(f"      Minimum across all grids: k = {global_best_size}")
+        print(f"      No grid found valid coloring with fewer than "
+              f"{global_best_size} cells")
+
+    seeds_info = (f"{len(grids)}/{len(grids)} grids, "
+                  f"{total_seeds} seeds completed")
+    return global_best_size, global_best, elapsed, seeds_info
 
 
 def main():
@@ -1084,12 +1099,19 @@ def main():
 
     n_cores = min(os.cpu_count() or 4, 10)
 
+    import platform
+    import datetime
+
     print("=" * 70)
-    print("OEIS A278299 -- Smallest Complete Polyomino Coloring Solver")
+    print("OEIS A278299 -- Smallest Complete Polyomino Coloring")
+    print("Simulated annealing solver (Numba JIT)")
     print("=" * 70)
+    print(f"  Software: Numba JIT, NumPy, Python {platform.python_version()}")
+    print(f"  Hardware: {platform.processor() or platform.machine()}, "
+          f"{platform.system()} {platform.release()}")
+    print(f"  Date: {datetime.date.today().isoformat()}")
     print(f"  n values to solve: {n_values}")
     print(f"  CPU cores: {n_cores}")
-    print(f"  Method: Numba JIT simulated annealing + adaptive moves")
 
     # JIT warmup
     print("\n  Compiling Numba JIT functions...")
@@ -1099,7 +1121,7 @@ def main():
     print(f"  JIT compiled in {time.time() - t_jit:.1f}s")
 
     # Reference table
-    print("\n  Known DATA values (proved by prior authors, listed on OEIS):")
+    print("\n  Prior authors' DATA values (from OEIS):")
     print("    n:    ", "  ".join(f"{n:4d}" for n in range(2, 12)))
     print("    a(n): ", "  ".join(f"{KNOWN_VALUES[n]:4d}" for n in range(2, 12)))
 
@@ -1114,36 +1136,31 @@ def main():
     t_total = time.time()
 
     for n in n_values:
-        best_size, best_coloring, elapsed = solve_n(n, verbose=args.verbose)
+        print(f"\n  n = {n}")
+        print(f"  {'-' * 40}")
+        best_size, best_coloring, elapsed, seeds_info = solve_n(n, verbose=args.verbose)
 
         # Verify
         valid, msg = verify_solution(best_coloring, n)
 
-        # Compare against known values
+        # Determine status
         known = KNOWN_VALUES.get(n)
-        upper = UPPER_BOUNDS.get(n)
         if known:
             if best_size == known:
-                status = f"MATCHES known value a({n}) = {known} (proved by prior authors)"
+                status = "MATCHED (prior authors)"
             elif best_size < known:
-                status = f"BELOW known value {known} -- possible bug!"
+                status = "BUG -- below known value!"
             else:
-                status = f"Above known value {known} (found {best_size})"
-        elif upper:
-            if best_size <= upper:
-                status = f"Matches upper bound a({n}) <= {upper}"
-            else:
-                status = f"Above best known {upper} (found {best_size})"
+                status = "ABOVE known value"
         else:
-            status = f"New result: a({n}) <= {best_size}"
+            status = "FOUND (upper bound)"
 
         # Get bounding box
         bb_rows, bb_cols = get_bounding_box(best_coloring)
 
-        print(f"\n  a({n}) = {best_size} cells ({bb_rows} X {bb_cols} bounding box) "
-              f"[{elapsed:.1f}s]")
-        print(f"    Verification: {msg}")
-        print(f"    Status: {status}")
+        print(f"    Result: a({n}) = {best_size}  [{elapsed:.1f}s]  {status}")
+        print(f"    Verified: {msg}")
+        print(f"    Bounding box: {bb_rows} X {bb_cols}")
 
         if best_coloring:
             from collections import Counter
@@ -1176,26 +1193,23 @@ def main():
         box_str = f"{r['bounding_box'][0]} X {r['bounding_box'][1]}"
         time_str = f"{r['elapsed']:.1f}s"
 
-        known = KNOWN_VALUES.get(n)
-        if known and r["size"] == known:
-            mark = "MATCHED"
-        elif known and r["size"] != known:
-            mark = "MISMATCH!"
-        elif n in UPPER_BOUNDS:
-            mark = f"<= {r['size']}"
-        else:
-            mark = f"<= {r['size']} (new)"
-        print(f"  {n:>3}  {r['size']:>5}  {box_str:>9}  {pairs:>6}  {time_str:>8}  {mark}")
+        print(f"  {n:>3}  {r['size']:>5}  {box_str:>9}  {pairs:>6}  {time_str:>8}  {r['status']}")
 
     print(f"\n  Total time: {total_elapsed:.1f}s")
 
-    # Known value match summary
+    # Prior authors' value match summary
     matched = [n for n in n_values if n in KNOWN_VALUES
                and results[n]["size"] == KNOWN_VALUES[n]]
     if matched:
-        print(f"\n  Solver matches the known OEIS DATA values for "
-              f"a({min(matched)}) through a({max(matched)}) "
-              f"(originally proved by prior authors)")
+        print(f"\n  Solver matches prior authors' DATA values for "
+              f"a({min(matched)}) through a({max(matched)})")
+
+    # Our upper bounds
+    found = [n for n in n_values if n not in KNOWN_VALUES
+             and results[n]["status"] == "FOUND (upper bound)"]
+    if found:
+        print(f"  Upper bounds a({min(found)}) through a({max(found)}) "
+              f"found by this solver")
 
     unmatched = [n for n in n_values if n in KNOWN_VALUES
                  and results[n]["size"] != KNOWN_VALUES[n]]
@@ -1208,9 +1222,6 @@ def main():
         with open(args.json, "w", encoding="utf-8") as f:
             json.dump(results, f, indent=2)
         print(f"\n  Solutions saved to {args.json}")
-
-    if args.log:
-        print(f"\n  Full log saved to {args.log}")
 
     print()
 
