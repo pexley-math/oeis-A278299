@@ -1,7 +1,5 @@
 # OEIS A278299 -- Smallest Complete Polyomino Coloring
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18977760.svg)](https://doi.org/10.5281/zenodo.18977760)
-
 Solver code, data, and figures for [OEIS A278299](https://oeis.org/A278299).
 
 ## The Problem
@@ -94,7 +92,9 @@ and Ryan Lee.
 
 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) -- Peter Exley, 2026.
 
+This work is freely available. If you find it useful, a citation or acknowledgment
+is appreciated but not required.
+
 ## Links
 
 - **OEIS page:** https://oeis.org/A278299
-- **Zenodo DOI:** [10.5281/zenodo.18977760](https://doi.org/10.5281/zenodo.18977760)

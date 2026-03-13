@@ -1,7 +1,6 @@
 {
   "sequence_id": "A278299",
   "title": "Smallest Complete Polyomino Coloring",
-  "concept_doi": "10.5281/zenodo.18977760",
   "github_url": "https://github.com/pexley-math/oeis-A278299",
   "oeis_url": "https://oeis.org/A278299",
   "figure_filename": "a278299-figures",
@@ -28,7 +27,6 @@
   "results_file": "research/solver-results.json",
   "log_file": "research/solver-run-log.txt",
   "files": [
-    ".zenodo.json",
     "LICENSE",
     "README.md",
     "code/solver-a278299.py",
