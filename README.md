@@ -78,7 +78,7 @@ annealing.
 | `code/generate-figures.py` | Figure generator (reads JSON, outputs Typst) |
 | `research/solver-results.json` | Machine-readable results from a full solver run |
 | `research/solver-run-log.txt` | Full solver output log |
-| `submission/a278299-grids.pdf` | Solution grids for upper bounds a(12) through a(17) |
+| `submission/a278299-figures.pdf` | Solution figures for upper bounds a(12) through a(17) |
 
 ## Prior Art
 

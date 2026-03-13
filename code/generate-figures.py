@@ -3,7 +3,7 @@ Generate Typst visual figures for A278299 complete polyomino colorings.
 Each color index gets a distinct hue with letter label.
 Uses standard 16-color palette (shared across all coloring projects)
 plus one extra for n=17.
-Reads solver-results.json, outputs a278299-grids.typ.
+Reads solver-results.json, outputs a278299-figures.typ.
 Shows a(12)-a(17): our upper bounds only.
 """
 
@@ -65,7 +65,7 @@ def color_legend_typst(num_colors):
 def main():
     base = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(base, "..", "research", "solver-results.json")
-    out_path = os.path.join(base, "..", "submission", "a278299-grids.typ")
+    out_path = os.path.join(base, "..", "submission", "a278299-figures.typ")
 
     with open(json_path) as f:
         data = json.load(f)
