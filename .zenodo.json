@@ -1,0 +1,25 @@
+{
+  "title": "OEIS A278299: Smallest Complete Polyomino Coloring -- Solver code, data, and figures",
+  "description": "Simulated annealing solver for OEIS A278299. Matches all 10 known terms a(2) through a(11) proved by prior authors. Computes 6 new constructive upper bounds: a(12) <= 40, a(13) <= 47, a(14) <= 56, a(15) <= 61, a(16) <= 69, a(17) <= 78. Includes solver code (Python/Numba), solution data (JSON), solver run log, and colored figure PDF.",
+  "creators": [
+    {
+      "name": "Exley, Peter"
+    }
+  ],
+  "upload_type": "software",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "OEIS",
+    "A278299",
+    "polyomino",
+    "coloring",
+    "simulated annealing"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://oeis.org/A278299",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
