@@ -1,0 +1,41 @@
+{
+  "sequence_id": "A278299",
+  "title": "Smallest Complete Polyomino Coloring",
+  "concept_doi": "10.5281/zenodo.18977760",
+  "github_url": "https://github.com/pexley-math/oeis-A278299",
+  "oeis_url": "https://oeis.org/A278299",
+  "figure_filename": "a278299-figures",
+  "readme_has_bounding_boxes": true,
+  "license": "CC-BY-4.0",
+  "author": "Peter Exley",
+  "git_author_name": "Peter Exley",
+  "git_author_email": "pexley-math@users.noreply.github.com",
+  "known_terms": {
+    "2": 2, "3": 4, "4": 6, "5": 9, "6": 12,
+    "7": 15, "8": 19, "9": 24, "10": 30, "11": 34
+  },
+  "our_terms": {
+    "12": {"value": 40, "status": "FOUND", "bounding_box": "6 X 7", "pairs": 66},
+    "13": {"value": 47, "status": "FOUND", "bounding_box": "7 X 7", "pairs": 78},
+    "14": {"value": 56, "status": "FOUND", "bounding_box": "7 X 8", "pairs": 91},
+    "15": {"value": 61, "status": "FOUND", "bounding_box": "7 X 9", "pairs": 105},
+    "16": {"value": 69, "status": "FOUND", "bounding_box": "9 X 9", "pairs": 120},
+    "17": {"value": 78, "status": "FOUND", "bounding_box": "9 X 11", "pairs": 136}
+  },
+  "prior_terms_range": "a(2) through a(11)",
+  "solver_type": "annealing",
+  "solver_file": "code/solver-a278299.py",
+  "results_file": "research/solver-results.json",
+  "log_file": "research/solver-run-log.txt",
+  "files": [
+    ".zenodo.json",
+    "LICENSE",
+    "README.md",
+    "code/solver-a278299.py",
+    "code/generate-figures.py",
+    "research/solver-results.json",
+    "research/solver-run-log.txt",
+    "submission/a278299-figures.pdf",
+    "submission/a278299-figures.typ"
+  ]
+}
