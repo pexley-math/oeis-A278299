@@ -8,7 +8,9 @@ a(n) = the smallest number of cells in a connected polyomino that can be
 colored with exactly n colors such that every pair of colors shares at least
 one edge.
 
-## Known Terms
+## Results
+
+**Known terms (proved by prior authors):**
 
 | n | a(n) | Status |
 |---|------|--------|
@@ -23,7 +25,7 @@ one edge.
 | 10 | 30 | OEIS DATA |
 | 11 | 34 | OEIS DATA |
 
-## Upper Bounds (this work)
+**Upper bounds (this work):**
 
 | n | a(n) <= | Bounding box | Pairs |
 |---|---------|-------------|-------|
@@ -41,19 +43,23 @@ binomial(n,2) color pairs share at least one edge.
 
 Simulated annealing with Numba JIT compilation. Full grid sweep (all grid
 sizes in profile) with all seeds run to completion. SAT (PySAT/CaDiCaL)
-verifies known terms a(2)-a(11) exactly.
+verifies known terms a(2)-a(11) exactly. Hardware: AMD Ryzen 5 5600
+(6-core), 16 GB RAM.
+
+## Prior Art and Acknowledgments
+
+The sequence A278299 was created by Peter Kagey (2017). Known terms a(2)
+through a(11) were proved by Alec Jones, Peter Kagey, and Ryan Lee. This
+work extends the sequence with constructive upper bounds for a(12) through
+a(17).
 
 ## Running the Solver
 
-**Requirements:** Python 3.8+, NumPy, Numba
+**Requirements:** Python 3.8+, numpy, numba
 
 ```bash
 pip install numpy numba
-```
 
-**Usage:**
-
-```bash
 # Solve all terms (a(2) through a(17))
 python code/solver-a278299.py --n 2-17 --verbose
 
@@ -78,16 +84,6 @@ annealing.
 | `research/solver-run-log.txt` | Full solver output log |
 | `submission/a278299-figures.pdf` | Solution figures for upper bounds a(12) through a(17) |
 
-## Prior Art
-
-Known terms a(2) through a(11) were found by Alec Jones, Peter Kagey,
-and Ryan Lee.
-
-## Hardware
-
-- AMD Ryzen 5 5600 (6-core / 12-thread), 16 GB RAM
-- Python 3 + NumPy + Numba
-
 ## License
 
 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) -- Peter Exley, 2026.
@@ -98,3 +94,4 @@ is appreciated but not required.
 ## Links
 
 - **OEIS page:** https://oeis.org/A278299
+- **GitHub:** https://github.com/pexley-math/oeis-A278299
