@@ -43,15 +43,7 @@ binomial(n,2) color pairs share at least one edge.
 
 Simulated annealing with Numba JIT compilation. Full grid sweep (all grid
 sizes in profile) with all seeds run to completion. SAT (PySAT/CaDiCaL)
-verifies known terms a(2)-a(11) exactly. Hardware: AMD Ryzen 5 5600
-(6-core), 16 GB RAM.
-
-## Prior Art and Acknowledgments
-
-The sequence A278299 was created by Peter Kagey (2017). Known terms a(2)
-through a(11) were proved by Alec Jones, Peter Kagey, and Ryan Lee. This
-work extends the sequence with constructive upper bounds for a(12) through
-a(17).
+verifies known terms a(2)-a(11) exactly.
 
 ## Running the Solver
 
@@ -83,6 +75,20 @@ annealing.
 | `research/solver-results.json` | Machine-readable results from a full solver run |
 | `research/solver-run-log.txt` | Full solver output log |
 | `submission/a278299-figures.pdf` | Solution figures for upper bounds a(12) through a(17) |
+
+## Prior Art and Acknowledgments
+
+The sequence A278299 was created by Peter Kagey (2017). Known terms a(2)
+through a(11) were proved by Alec Jones, Peter Kagey, and Ryan Lee. This
+work extends the sequence with constructive upper bounds for a(12) through
+a(17).
+
+This work was inspired by the [OEIS](https://oeis.org/) and the community of
+contributors who maintain it.
+
+## Hardware
+
+AMD Ryzen 5 5600 (6-core), 16 GB RAM.
 
 ## License
 
