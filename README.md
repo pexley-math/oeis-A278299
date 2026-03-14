@@ -14,16 +14,16 @@ one edge.
 
 | n | a(n) | Status |
 |---|------|--------|
-| 2 | 2 | OEIS DATA |
-| 3 | 4 | OEIS DATA |
-| 4 | 6 | OEIS DATA |
-| 5 | 9 | OEIS DATA |
-| 6 | 12 | OEIS DATA |
-| 7 | 15 | OEIS DATA |
-| 8 | 19 | OEIS DATA |
-| 9 | 24 | OEIS DATA |
-| 10 | 30 | OEIS DATA |
-| 11 | 34 | OEIS DATA |
+| 2 | 2 | Known (DATA) |
+| 3 | 4 | Known (DATA) |
+| 4 | 6 | Known (DATA) |
+| 5 | 9 | Known (DATA) |
+| 6 | 12 | Known (DATA) |
+| 7 | 15 | Known (DATA) |
+| 8 | 19 | Known (DATA) |
+| 9 | 24 | Known (DATA) |
+| 10 | 30 | Known (DATA) |
+| 11 | 34 | Known (DATA) |
 
 **Upper bounds (this work):**
 
