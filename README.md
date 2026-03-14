@@ -100,4 +100,3 @@ is appreciated but not required.
 ## Links
 
 - **OEIS page:** https://oeis.org/A278299
-- **GitHub:** https://github.com/pexley-math/oeis-A278299
