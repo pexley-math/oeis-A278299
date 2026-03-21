@@ -1,0 +1,27 @@
+{
+  "n": 13,
+  "k": 46,
+  "pairs": 78,
+  "shape": "rect-7x7 minus 3 corners at (0,0), (0,6), (6,0)",
+  "perimeter": 28,
+  "edges": 78,
+  "interior_cells": 25,
+  "bounding_box": [7, 7],
+  "verified": true,
+  "verification": {
+    "proper_coloring": true,
+    "violations": 0,
+    "pairs_witnessed": 78,
+    "connected": true
+  },
+  "color_distribution": [4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4],
+  "grid": [
+    [null,  0,  9, 11, 12,  9, null],
+    [   8,  5,  1,  0,  3,  2,   11],
+    [   0,  2, 12,  6, 11,  1,    7],
+    [  12, 10,  5,  9,  4,  3,   10],
+    [   8,  1,  6,  3,  7,  5,   11],
+    [  10,  4,  2,  8,  6,  4,    8],
+    [null, 12,  7,  9, 10,  0,    7]
+  ]
+}

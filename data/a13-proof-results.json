@@ -1,0 +1,94 @@
+{
+  "shapes_tested": 11,
+  "all_infeasible": true,
+  "results": [
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-6x8 minus 2",
+      "cells": 46,
+      "edges": 78,
+      "interior": 23
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-6x8 minus 2",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-6x8 minus 2",
+      "cells": 46,
+      "edges": 78,
+      "interior": 23
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-6x8 minus 2",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-6x8 minus 2",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-7x7 minus 3",
+      "cells": 46,
+      "edges": 78,
+      "interior": 23
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.03,
+      "shape": "rect-7x7 minus 3",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-7x7 minus 3",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-7x7 minus 3",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-7x7 minus 3",
+      "cells": 46,
+      "edges": 78,
+      "interior": 24
+    },
+    {
+      "status": "INFEASIBLE",
+      "time_s": 0.04,
+      "shape": "rect-7x7 minus 3",
+      "cells": 46,
+      "edges": 78,
+      "interior": 25
+    }
+  ]
+}
