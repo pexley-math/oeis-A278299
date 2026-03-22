@@ -65,7 +65,6 @@ python code/verify_proofs.py
 | `data/a17-k77-solution.json` | Verified 17-color solution (77 cells) |
 | `data/a18-k90-solution.json` | Verified 18-color solution (90 cells) |
 | `data/solver-results.json` | Full solver run data |
-| `data/solver-run-log.txt` | Solver run log (all terms, verbose) |
 | `submission/oeis-draft.txt` | OEIS submission text |
 
 ## Prior Art
