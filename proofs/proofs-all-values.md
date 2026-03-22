@@ -10,7 +10,7 @@
 
 ## Proof Methods
 
-Three types of impossibility argument are used:
+Two types of impossibility argument are used:
 
 **1. Edge bound.** A polyomino with k cells has internal edges E = (4k - p)/2, where p is the perimeter. For n colors, we need E >= C(n,2) = n(n-1)/2. Since p >= p_min(k) (the minimum perimeter for k cells), we get max E = (4k - p_min(k))/2. If this is less than C(n,2), no valid coloring exists.
 
