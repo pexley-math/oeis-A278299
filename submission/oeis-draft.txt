@@ -1,6 +1,6 @@
 # A278299 -- Extension submission
 # Replaces earlier submission of 07/03/2026.
-# a(13) corrected from 47 to 46, a(17) corrected from 78 to 77.
+# a(13) and a(17) improved from upper bounds (47, 78) to proved values (46, 77).
 # Date: 22/03/2026
 
 
@@ -11,7 +11,7 @@
 %C A278299 For n == 0 (mod 4) with n <= 16, a(n) = floor((n^2+n+5)/4) (edge bound is tight). Proved for n = 4, 8, 12, 16. - _Peter Exley_, Mar 22 2026
 %C A278299 This sequence is the inverse of the achromatic number problem for grid subgraphs: a(n) = min |V(H)| over connected subgraphs H of the infinite grid with achromatic number psi(H) >= n. - _Peter Exley_, Mar 22 2026
 
-%C A278299 a(13) corrected from 47 to 46, a(17) corrected from 78 to 77. - _Peter Exley_, Mar 22 2026
+%C A278299 a(13) improved from upper bound 47 to proved value 46, a(17) from 78 to 77. - _Peter Exley_, Mar 22 2026
 
 %H A278299 Peter Exley, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>.
 
