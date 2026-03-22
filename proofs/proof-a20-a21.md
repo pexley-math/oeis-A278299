@@ -1,4 +1,23 @@
-# Proof that a(20) = 108 and a(21) = 119
+# ~~Proof that a(20) = 108 and a(21) = 119~~
+
+## WARNING: THESE PROOFS ARE INVALIDATED (22/03/2026)
+
+**This document is kept for historical reference only. Do NOT cite these proofs.**
+
+Three fatal flaws were identified by adversarial review (DeepSeek + verify_proofs.py):
+
+1. **Duplicate edges allowed:** The claim I_I <= C(13,2) = 78 is wrong. The problem
+   allows multiple edges between the same colour pair. 78 is a lower bound, not upper.
+2. **Border accounting:** Tight cells on the interior-grid border have < 4 interior
+   neighbours. The equation 2*I_I + I_N = 208 over-counts.
+3. **Arithmetic error (a(21)):** Total interior edges needed = 142 (not 144).
+   142 = 142 is not a contradiction.
+
+a(20) <= 108 and a(21) <= 119 remain valid as UPPER BOUNDS (constructions verified).
+
+---
+
+
 
 ## OEIS A278299
 

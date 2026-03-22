@@ -3,37 +3,53 @@
   "title": "Smallest Complete Polyomino Coloring",
   "github_url": "https://github.com/pexley-math/oeis-A278299",
   "oeis_url": "https://oeis.org/A278299",
-  "figure_filename": "a278299-figures",
-  "readme_has_bounding_boxes": true,
   "license": "CC-BY-4.0",
   "author": "Peter Exley",
+  "date": "2026-03-22",
   "git_author_name": "Peter Exley",
   "git_author_email": "pexley-math@users.noreply.github.com",
   "known_terms": {
     "2": 2, "3": 4, "4": 6, "5": 9, "6": 12,
     "7": 15, "8": 19, "9": 24, "10": 30, "11": 34
   },
-  "our_terms": {
-    "12": {"value": 40, "status": "FOUND", "bounding_box": "6 X 7", "pairs": 66},
-    "13": {"value": 47, "status": "FOUND", "bounding_box": "7 X 7", "pairs": 78},
-    "14": {"value": 56, "status": "FOUND", "bounding_box": "7 X 8", "pairs": 91},
-    "15": {"value": 61, "status": "FOUND", "bounding_box": "7 X 9", "pairs": 105},
-    "16": {"value": 69, "status": "FOUND", "bounding_box": "9 X 9", "pairs": 120},
-    "17": {"value": 78, "status": "FOUND", "bounding_box": "9 X 11", "pairs": 136}
+  "proved_terms": {
+    "12": {"value": 40, "status": "PROVED", "method": "edge_bound", "key_inequality": "65 < 66"},
+    "13": {"value": 46, "status": "PROVED", "method": "edge_bound", "key_inequality": "76 < 78"},
+    "14": {"value": 56, "status": "PROVED", "method": "contact_bound", "key_inequality": "12 < 13"},
+    "15": {"value": 61, "status": "PROVED", "method": "edge_bound", "key_inequality": "104 < 105"},
+    "16": {"value": 69, "status": "PROVED", "method": "edge_bound", "key_inequality": "119 < 120"},
+    "17": {"value": 77, "status": "PROVED", "method": "edge_bound", "key_inequality": "134 < 136"},
+    "18": {"value": 90, "status": "PROVED", "method": "contact_bound", "key_inequality": "16 < 17"}
+  },
+  "upper_bounds": {
+    "19": {"value": 97, "status": "UPPER BOUND", "note": "Lower bound proof incomplete (perimeter-42 shapes untested)"},
+    "20": {"value": 108, "status": "UPPER BOUND", "note": "Interior edge proof invalidated 22/03/2026"},
+    "21": {"value": 119, "status": "UPPER BOUND", "note": "Interior edge sum proof invalidated 22/03/2026"}
   },
   "prior_terms_range": "a(2) through a(11)",
   "solver_type": "annealing",
-  "solver_file": "code/solver-a278299.py",
-  "results_file": "research/solver-results.json",
-  "log_file": "research/solver-run-log.txt",
   "files": [
     "LICENSE",
     "README.md",
     "code/solver-a278299.py",
-    "code/generate-figures.py",
-    "research/solver-results.json",
-    "research/solver-run-log.txt",
-    "submission/a278299-figures.pdf",
-    "submission/a278299-figures.typ"
+    "code/verify_proofs.py",
+    "data/a12-k40-solution.json",
+    "data/a13-k46-solution.json",
+    "data/a14-k56-solution.json",
+    "data/a15-k61-solution.json",
+    "data/a16-k69-solution.json",
+    "data/a17-k77-solution.json",
+    "data/a18-k90-solution.json",
+    "data/a19-k97-solution.json",
+    "data/a20-k108-solution.json",
+    "data/a21-k119-solution.json",
+    "data/solver-results.json",
+    "data/a13-proof-results.json",
+    "data/a17-proof-results.json",
+    "proofs/proofs-all-values.md",
+    "proofs/proof-a20-a21.md",
+    "figures/a278299-figures.pdf",
+    "figures/a278299-figures.typ",
+    "submission/oeis-draft.txt"
   ]
 }
