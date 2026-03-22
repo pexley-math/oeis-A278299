@@ -392,7 +392,7 @@ Proof Run -- Cython/C annealer v21 with shared library optimisations
       9 X 10: best = 90  <-- target matched  [1.2s]
       7 X 13: best = 90  <-- target matched  [32.3s]
       8 X 12: best = 90  <-- target matched  [10.6s]
-    Result: a(18) = 90  [44.1s]  PROVED
+    Result: a(18) = 90  [44.1s]  proved
     Verified: VALID
     Bounding box: 9 X 10
     Color distribution: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
@@ -428,7 +428,7 @@ RESULTS SUMMARY
    15     61      7 X 9    303.4s  proved
    16     69      9 X 9    808.8s  proved
    17     78    10 X 10    929.6s  proved
-   18     90     9 X 10     44.1s  PROVED
+   18     90     9 X 10     44.1s  proved
 
   Total time: 6180.2s
-  DATA line (proved): 2, 4, 6, 9, 12, 15, 19, 24, 30, 34, 40, 47, 56, 61, 69, 78
+  DATA line (proved): 2, 4, 6, 9, 12, 15, 19, 24, 30, 34, 40, 46, 56, 61, 69, 77, 90
