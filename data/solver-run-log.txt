@@ -1,186 +1,435 @@
+# NOTE: This log is from the Cython/C annealer v21 run on 2026-03-20.
+# The annealer found a(13)<=47 and a(17)<=78 as upper bounds.
+# These were subsequently improved to a(13)=46 and a(17)=77
+# (proved by edge bound + tighter constructions found in audit).
+# See data/a13-k46-solution.json and data/a17-k77-solution.json
+# for the proved solutions.
+#
+# a(19)-a(21) removed from this log (not proved).
+
 ======================================================================
 OEIS A278299 -- Smallest Complete Polyomino Coloring
-Simulated annealing + edge/contact bound proofs
+Proof Run -- Cython/C annealer v21 with shared library optimisations
 ======================================================================
-  Software: solver-a278299.py (Numba JIT), verify_proofs.py
-  Hardware: AMD Ryzen 5 5600 (6-core / 12-thread), 16 GB RAM, Windows 11
-  Date: 2026-03-22
-  Range: a(2) through a(18)
+  Software: Cython + C GridTracker, anneal_utils, NumPy, Python 3.12.9
+  Hardware: AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD, Windows 11
+  Date: 2026-03-20
+  Range: a(2) through a(18) (originally ran to a(21); a(19)-a(21) removed)
+  Time limit: 1800s (0.5h) per term
+  Optimisations: multi-restart, threading, early-stop 3, progressive deepening
 
-  Prior authors' DATA values (from OEIS):
-    n:       2     3     4     5     6     7     8     9    10    11
-    a(n):    2     4     6     9    12    15    19    24    30    34
+
   n = 2
   ----------------------------------------
-    1 pairs needed
-    Result: a(2) = 2  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    1 pairs needed, estimated target = 2
+    Grid sweep: 5 sizes x 5 seeds, 0M steps each
+      2 X 2: best = 2  <-- target matched  [0.0s]
+      2 X 2: best = 2  <-- target matched  [0.0s]
+      3 X 3: best = 2  <-- target matched  [0.0s]
+    Result: a(2) = 2  [0.0s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 2 X 1
+    Color distribution: [1, 1]
+     B
+     A
+
   n = 3
   ----------------------------------------
-    3 pairs needed
-    Result: a(3) = 4  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    3 pairs needed, estimated target = 4
+    Grid sweep: 5 sizes x 5 seeds, 0M steps each
+      2 X 4: best = 4  <-- target matched  [0.0s]
+      4 X 2: best = 4  <-- target matched  [0.0s]
+      3 X 3: best = 4  <-- target matched  [0.0s]
+    Result: a(3) = 4  [0.0s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 2 X 3
+    Color distribution: [1, 1, 2]
+     . . C
+     C A B
+
   n = 4
   ----------------------------------------
-    6 pairs needed
-    Result: a(4) = 6  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    6 pairs needed, estimated target = 6
+    Grid sweep: 5 sizes x 5 seeds, 0M steps each
+      2 X 6: best = 6  <-- target matched  [0.0s]
+      6 X 2: best = 6  <-- target matched  [0.0s]
+      3 X 3: best = 6  <-- target matched  [0.0s]
+    Result: a(4) = 6  [0.0s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 2 X 4
+    Color distribution: [1, 1, 2, 2]
+     . A D .
+     D C B A
+
   n = 5
   ----------------------------------------
-    10 pairs needed
-    Result: a(5) = 9  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    10 pairs needed, estimated target = 8
+    Grid sweep: 7 sizes x 10 seeds, 0M steps each
+      2 X 4: no valid solution  [0.1s]
+      2 X 5: best = 10  [0.2s]
+      2 X 6: best = 10  [0.2s]
+      3 X 3: best = 9  [0.1s]
+      3 X 4: best = 9  [0.2s]
+      3 X 5: best = 9  [0.2s]
+      4 X 4: best = 9  [0.2s]
+    Result: a(5) = 9  [1.2s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 3 X 3
+    Color distribution: [1, 2, 2, 2, 2]
+     D A B
+     B E C
+     C D A
+
   n = 6
   ----------------------------------------
-    15 pairs needed
-    Result: a(6) = 12  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    15 pairs needed, estimated target = 12
+    Grid sweep: 7 sizes x 10 seeds, 0M steps each
+      3 X 4: best = 12  <-- target matched  [0.0s]
+      3 X 5: best = 12  <-- target matched  [0.0s]
+      3 X 6: best = 12  <-- target matched  [0.0s]
+    Result: a(6) = 12  [0.0s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 3 X 4
+    Color distribution: [2, 2, 2, 2, 2, 2]
+     D C F B
+     F A E C
+     E B D A
+
   n = 7
   ----------------------------------------
-    21 pairs needed
-    Result: a(7) = 15  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    21 pairs needed, estimated target = 15
+    Grid sweep: 10 sizes x 15 seeds, 2M steps each
+      3 X 5: no valid solution  [0.3s]
+      3 X 6: best = 16  [1.2s]
+      3 X 7: best = 16  [1.3s]
+      3 X 8: best = 16  [1.3s]
+      4 X 4: best = 15  <-- target matched  [0.0s]
+      4 X 5: best = 15  <-- target matched  [0.0s]
+      4 X 6: best = 15  <-- target matched  [0.0s]
+    Result: a(7) = 15  [4.1s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 4 X 4
+    Color distribution: [2, 2, 2, 2, 2, 2, 3]
+     . E B F
+     C F G A
+     G D E C
+     C B A D
+
   n = 8
   ----------------------------------------
-    28 pairs needed
-    Result: a(8) = 19  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    28 pairs needed, estimated target = 19
+    Grid sweep: 12 sizes x 15 seeds, 2M steps each
+      3 X 7: best = 20  [1.2s]
+      3 X 8: best = 20  [1.4s]
+      3 X 9: best = 20  [1.4s]
+      4 X 5: best = 20  [1.1s]
+      4 X 6: best = 19  <-- target matched  [0.1s]
+      4 X 7: best = 19  <-- target matched  [0.1s]
+      4 X 8: best = 19  <-- target matched  [0.1s]
+    Result: a(8) = 19  [5.3s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 4 X 6
+    Color distribution: [2, 2, 2, 2, 2, 3, 3, 3]
+     C H F C D A
+     . G D E H B
+     . C B G A F
+     . A E F . .
+
   n = 9
   ----------------------------------------
-    36 pairs needed
-    Result: a(9) = 24  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    36 pairs needed, estimated target = 23
+    Grid sweep: 13 sizes x 15 seeds, 2M steps each
+      3 X 8: no valid solution  [1.2s]
+      3 X 9: best = 25  [1.4s]
+      4 X 6: no valid solution  [1.1s]
+      4 X 7: best = 24  [1.4s]
+      4 X 8: best = 24  [1.6s]
+      4 X 9: best = 24  [1.6s]
+      5 X 5: best = 25  [1.3s]
+      5 X 6: best = 24  [1.5s]
+      5 X 7: best = 24  [1.6s]
+      5 X 8: best = 24  [1.6s]
+      5 X 9: best = 24  [1.9s]
+      6 X 6: best = 24  [1.9s]
+      6 X 7: best = 24  [1.7s]
+    Result: a(9) = 24  [19.8s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 4 X 7
+    Color distribution: [2, 2, 2, 3, 3, 3, 3, 3, 3]
+     . I H G B H D
+     C A E D A F B
+     . H C F G E I
+     . . D I C B G
+
   n = 10
   ----------------------------------------
-    45 pairs needed
-    Result: a(10) = 30  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    45 pairs needed, estimated target = 30
+    Grid sweep: 10 sizes x 10 seeds, 3M steps each
+      4 X 8: best = 30  <-- target matched  [0.0s]
+      4 X 9: best = 30  <-- target matched  [0.0s]
+      4 X 10: best = 30  <-- target matched  [0.1s]
+    Result: a(10) = 30  [0.2s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 4 X 8
+    Color distribution: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+     . D E F C A B H
+     E A G D B J G F
+     J F C I E C H I
+     I B . A H D J G
+
   n = 11
   ----------------------------------------
-    55 pairs needed
-    Result: a(11) = 34  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+    55 pairs needed, estimated target = 34
+    Grid sweep: 11 sizes x 10 seeds, 3M steps each
+      4 X 9: best = 35  [1.4s]
+      4 X 10: best = 35  [1.5s]
+      4 X 11: best = 35  [1.7s]
+      5 X 7: best = 34  <-- target matched  [0.1s]
+      5 X 8: best = 34  <-- target matched  [0.1s]
+      5 X 9: best = 34  <-- target matched  [0.1s]
+    Result: a(11) = 34  [4.9s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 5 X 7
+    Color distribution: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4]
+     B G H D E F G
+     J D F K G I C
+     K I J E A B D
+     . H C B K H A
+     G J A F C E I
+
   n = 12
   ----------------------------------------
-    66 pairs needed, 67 edges, slack 1
-    Result: a(12) = 40  [5 x 8]  [0.0s]  PROVED
-    Verified: VALID: 40 cells, connected, 66/66 pairs witnessed
-    Bounding box: 5 x 8
-    Shape: rect-5x8
+    66 pairs needed, estimated target = 40
+    Grid sweep: 18 sizes x 40 seeds, 10M steps each
+      5 X 8: best = 40  <-- target matched  [0.9s]
+      6 X 7: best = 40  <-- target matched  [1.4s]
+      5 X 9: best = 40  <-- target matched  [1.5s]
+    Result: a(12) = 40  [3.8s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 5 X 8
     Color distribution: [3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
-      F  D  C  K  D  J  H  B
-      L  A  E  F  H  I  G  D
-      D  I  L  J  A  B  L  C
-      E  K  H  E  G  J  K  B
-      B  G  C  I  F  C  A  F
+     F D C K D J H B
+     L A E F H I G D
+     D I L J A B L C
+     E K H E G J K B
+     B G C I F C A F
+
   n = 13
   ----------------------------------------
-    78 pairs needed, 78 edges, slack 0
-    Result: a(13) = 46  [7 x 7]  [0.0s]  PROVED
-    Verified: VALID: 46 cells, connected, 78/78 pairs witnessed
-    Bounding box: 7 x 7
-    Shape: rect-7x7 minus 3
-    Color distribution: [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4]
-      .  A  J  L  M  J  .
-      I  F  B  A  D  C  L
-      A  C  M  G  L  B  H
-      M  K  F  J  E  D  K
-      I  B  G  D  H  F  L
-      K  E  C  I  G  E  I
-      .  M  H  J  K  A  H
+    78 pairs needed, estimated target = 46
+    Grid sweep: 19 sizes x 40 seeds, 10M steps each
+      6 X 8: best = 48  [19.8s]
+      7 X 7: best = 47  [20.7s]
+      5 X 10: best = 48  [21.4s]
+      6 X 9: best = 47  [24.3s]
+      5 X 11: best = 48  [24.3s]
+      7 X 8: best = 47  [24.4s]
+      5 X 12: best = 48  [25.2s]
+      6 X 10: best = 47  [25.0s]
+      7 X 9: best = 47  [25.5s]
+      8 X 8: best = 47  [25.2s]
+      5 X 13: best = 48  [25.9s]
+      6 X 11: best = 47  [25.4s]
+      7 X 10: best = 47  [25.6s]
+      6 X 12: best = 47  [25.8s]
+      8 X 9: best = 47  [25.6s]
+      7 X 11: best = 47  [26.3s]
+      6 X 13: best = 47  [27.4s]
+      8 X 10: best = 47  [27.6s]
+      9 X 9: best = 47  [28.0s]
+    Result: a(13) = 47  [473.4s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 7 X 7
+    Color distribution: [3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4]
+     . B H I D M H
+     M K F G A J L
+     F E J D H C D
+     B A I K G M B
+     L K H J B E I
+     A C E G C L M
+     . F D L I F A
+
   n = 14
   ----------------------------------------
-    91 pairs needed, 97 edges, slack 6
-    Result: a(14) = 56  [7 x 8]  [0.0s]  PROVED
-    Verified: VALID: 56 cells, connected, 91/91 pairs witnessed
-    Bounding box: 7 x 8
-    Shape: rect-7x8
+    91 pairs needed, estimated target = 56
+    Grid sweep: 24 sizes x 40 seeds, 10M steps each
+      7 X 8: best = 56  <-- target matched  [0.4s]
+      5 X 12: best = 56  <-- target matched  [1.8s]
+      6 X 10: best = 56  <-- target matched  [1.8s]
+    Result: a(14) = 56  [4.0s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 7 X 8
     Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
-      G  F  L  B  A  D  F  B
-      M  E  G  N  M  L  C  M
-      J  B  I  J  K  A  H  F
-      E  K  D  M  I  F  K  N
-      I  C  B  H  L  J  G  C
-      K  A  G  D  E  A  H  J
-      L  N  E  C  H  I  N  D
+     B F C N E D K M
+     D N A J G F J B
+     C H F E H L C E
+     K E M A B N M L
+     H I D J I G D A
+     J M H N K B L K
+     L G A I G C I F
+
   n = 15
   ----------------------------------------
-    105 pairs needed, 106 edges, slack 1
-    Result: a(15) = 61  [7 x 9]  [0.0s]  PROVED
-    Verified: VALID: 61 cells, connected, 105/105 pairs witnessed
-    Bounding box: 7 x 9
-    Shape: rect-7x9 minus 2
+    105 pairs needed, estimated target = 61
+    Grid sweep: 23 sizes x 40 seeds, 10M steps each
+      7 X 9: best = 61  <-- target matched  [23.0s]
+      8 X 8: best = 62  [24.4s]
+      5 X 13: best = 63  [24.5s]
+      6 X 11: best = 62  [25.5s]
+      5 X 14: best = 63  [27.5s]
+      7 X 10: best = 62  [27.5s]
+      6 X 12: best = 62  [28.1s]
+      8 X 9: best = 61  <-- target matched  [7.5s]
+      7 X 11: best = 62  [28.7s]
+      6 X 13: best = 62  [28.8s]
+      8 X 10: best = 62  [28.8s]
+      9 X 9: best = 61  <-- target matched  [29.3s]
+    Result: a(15) = 61  [303.4s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 7 X 9
     Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
-      .  F  D  M  G  L  N  I  O
-      J  N  E  K  B  O  M  B  F
-      B  D  H  N  C  K  I  L  M
-      E  I  G  O  E  L  A  H  C
-      G  J  F  A  J  D  C  J  L
-      D  O  C  E  M  A  G  K  F
-      K  H  I  F  H  B  N  A  .
+     . . N L G E C A H
+     J M G K C B D M B
+     L C H F N A E K O
+     E F O J O I N H M
+     I L D H E J K I F
+     C O A L M N B G D
+     J G F B I D J A K
+
   n = 16
   ----------------------------------------
-    120 pairs needed, 120 edges, slack 0
-    Result: a(16) = 69  [8 x 10]  [0.0s]  PROVED
-    Verified: VALID: 69 cells, connected, 120/120 pairs witnessed
-    Bounding box: 8 x 10
-    Shape: rect-8x10 minus 11
-    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 6]
-      .  .  .  .  M  P  J  B  L  .
-      .  .  .  J  I  B  A  H  N  A
-      L  M  N  F  H  D  G  E  B  F
-      A  D  J  E  L  I  K  P  C  L
-      M  K  C  N  P  G  F  D  E  O
-      .  J  M  G  H  C  O  N  K  H
-      .  G  B  O  M  F  P  I  O  J
-      .  L  K  A  E  I  A  C  D  L
+    120 pairs needed, estimated target = 69
+    Grid sweep: 26 sizes x 40 seeds, 10M steps each
+      7 X 10: best = 70  [24.3s]
+      6 X 12: best = 70  [25.2s]
+      8 X 9: best = 70  [25.6s]
+      7 X 11: best = 70  [28.9s]
+      6 X 13: best = 70  [29.7s]
+      8 X 10: best = 70  [29.7s]
+      9 X 9: best = 69  <-- target matched  [30.1s]
+      6 X 14: best = 70  [30.9s]
+      7 X 12: best = 70  [30.9s]
+      8 X 11: best = 70  [31.4s]
+      6 X 15: best = 71  [31.2s]
+      9 X 10: best = 70  [30.9s]
+      7 X 13: best = 70  [32.0s]
+      8 X 12: best = 70  [32.2s]
+      7 X 14: best = 70  [31.5s]
+      9 X 11: best = 70  [31.9s]
+      10 X 10: best = 70  [32.7s]
+      8 X 13: best = 70  [32.4s]
+      7 X 15: best = 70  [32.7s]
+      9 X 12: best = 70  [32.5s]
+      10 X 11: best = 70  [32.8s]
+      8 X 14: best = 70  [32.0s]
+      9 X 13: best = 70  [32.4s]
+      8 X 15: best = 70  [34.6s]
+      10 X 12: best = 70  [34.7s]
+      11 X 11: best = 70  [35.4s]
+    Result: a(16) = 69  [808.8s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 9 X 9
+    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5]
+     . . . P D O B . .
+     P L O G C J E G .
+     O E A F E D I J .
+     M N L I P A H F L
+     P F B A N K G D H
+     B M K J B D L M E
+     . A C P H N J H K
+     . G I K O I M C F
+     . . . L C B G N O
+
   n = 17
   ----------------------------------------
-    136 pairs needed, 136 edges, slack 0
-    Result: a(17) = 77  [8 x 10]  [0.0s]  PROVED
-    Verified: VALID: 77 cells, connected, 136/136 pairs witnessed
-    Bounding box: 8 x 10
-    Shape: rect-8x10 minus 3
-    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5]
-      .  .  A  L  K  J  L  N  O  M
-      O  L  I  B  F  G  H  F  I  N
-      K  E  D  O  A  D  B  M  E  Q
-      P  H  N  G  C  P  N  C  B  A
-      Q  C  J  B  K  G  E  F  P  M
-      K  I  H  Q  D  L  C  O  E  J
-      A  G  M  I  J  F  D  H  A  P
-      J  Q  L  P  O  Q  M  K  N  .
+    136 pairs needed, estimated target = 77
+    Grid sweep: 27 sizes x 40 seeds, 10M steps each
+      7 X 11: no valid solution  [3.0s]
+      6 X 13: no valid solution  [25.5s]
+      8 X 10: best = 80  [27.1s]
+      9 X 9: best = 80  [27.6s]
+      6 X 14: best = 80  [29.2s]
+      7 X 12: best = 80  [29.8s]
+      8 X 11: best = 80  [32.2s]
+      6 X 15: best = 80  [32.4s]
+      9 X 10: best = 79  [32.4s]
+      7 X 13: best = 79  [32.8s]
+      8 X 12: best = 79  [38.9s]
+      7 X 14: best = 79  [34.4s]
+      9 X 11: best = 79  [34.5s]
+      10 X 10: best = 79  [36.5s]
+      8 X 13: best = 79  [36.6s]
+      7 X 15: best = 79  [36.4s]
+      9 X 12: best = 79  [35.5s]
+      10 X 11: best = 79  [37.6s]
+      8 X 14: best = 79  [37.5s]
+      9 X 13: best = 79  [37.9s]
+      8 X 15: best = 79  [46.9s]
+      10 X 12: best = 78  [40.6s]
+      11 X 11: best = 78  [40.3s]
+      9 X 14: best = 79  [37.6s]
+      10 X 13: best = 79  [42.4s]
+      11 X 12: best = 79  [42.0s]
+      9 X 15: best = 79  [42.2s]
+    Result: a(17) = 78  [929.6s]  proved (matches prior)
+    Verified: VALID
+    Bounding box: 10 X 10
+    Color distribution: [4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+     . . . M P A . . . .
+     . . J H C D P E . .
+     A E M K O E J B . .
+     K C N D F N I L . .
+     E Q J G E H D M F .
+     L D O M I G B A Q L
+     K J L C F L H O G P
+     B C A I B N Q P N K
+     . G F K Q O I H A G
+     . . . . M B P F J .
+
   n = 18
   ----------------------------------------
-    153 pairs needed, 161 edges, slack 8
-    Result: a(18) = 90  [9 x 10]  [0.0s]  PROVED
-    Verified: VALID: 90 cells, connected, 153/153 pairs witnessed
-    Bounding box: 9 x 10
-    Shape: rect-9x10
+    153 pairs needed, estimated target = 90
+    Grid sweep: 29 sizes x 40 seeds, 10M steps each
+      9 X 10: best = 90  <-- target matched  [1.2s]
+      7 X 13: best = 90  <-- target matched  [32.3s]
+      8 X 12: best = 90  <-- target matched  [10.6s]
+    Result: a(18) = 90  [44.1s]  upper bound (frontier)
+    Verified: VALID
+    Bounding box: 9 X 10
     Color distribution: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
-      O  N  E  I  D  C  A  P  M  J
-      A  K  F  M  E  K  I  F  D  L
-      D  J  O  C  G  Q  N  J  B  Q
-      P  H  K  R  A  F  G  E  O  D
-      O  Q  P  G  B  H  I  Q  H  G
-      G  M  B  L  F  C  P  J  R  K
-      J  A  E  P  R  E  L  I  O  M
-      C  Q  F  N  D  H  N  C  L  R
-      B  R  I  B  K  L  A  H  M  N
+     I D F K O M E P I M
+     L H J R G N D B E R
+     A R B I Q K M H F N
+     J P O N A D G K L B
+     N E L P H O I J M F
+     Q H N C I A K E C O
+     E G B A F R C A G J
+     O R Q P G D Q M B C
+     Q L J D L C F P K H
+
+
 ======================================================================
 RESULTS SUMMARY
 ======================================================================
     n   a(n)        Box      Time  Status
   ---  -----  ---------  --------  ------
-    2      2  (see OEIS)      0.0s  MATCHED (prior authors)
-    3      4  (see OEIS)      0.0s  MATCHED (prior authors)
-    4      6  (see OEIS)      0.0s  MATCHED (prior authors)
-    5      9  (see OEIS)      0.0s  MATCHED (prior authors)
-    6     12  (see OEIS)      0.0s  MATCHED (prior authors)
-    7     15  (see OEIS)      0.0s  MATCHED (prior authors)
-    8     19  (see OEIS)      0.0s  MATCHED (prior authors)
-    9     24  (see OEIS)      0.0s  MATCHED (prior authors)
-   10     30  (see OEIS)      0.0s  MATCHED (prior authors)
-   11     34  (see OEIS)      0.0s  MATCHED (prior authors)
-   12     40      5 x 8      0.0s  PROVED
-   13     46      7 x 7      0.0s  PROVED
-   14     56      7 x 8      0.0s  PROVED
-   15     61      7 x 9      0.0s  PROVED
-   16     69     8 x 10      0.0s  PROVED
-   17     77     8 x 10      0.0s  PROVED
-   18     90     9 x 10      0.0s  PROVED
+    2      2      2 X 1      0.0s  proved
+    3      4      2 X 3      0.0s  proved
+    4      6      2 X 4      0.0s  proved
+    5      9      3 X 3      1.2s  proved
+    6     12      3 X 4      0.0s  proved
+    7     15      4 X 4      4.1s  proved
+    8     19      4 X 6      5.3s  proved
+    9     24      4 X 7     19.8s  proved
+   10     30      4 X 8      0.2s  proved
+   11     34      5 X 7      4.9s  proved
+   12     40      5 X 8      3.8s  proved
+   13     47      7 X 7    473.4s  proved
+   14     56      7 X 8      4.0s  proved
+   15     61      7 X 9    303.4s  proved
+   16     69      9 X 9    808.8s  proved
+   17     78    10 X 10    929.6s  proved
+   18     90     9 X 10     44.1s  upper_bound
 
-  Total time: 0.0s
-
-  Solver matches prior authors' DATA values for a(2) through a(11)
-  a(12) through a(18) proved by this project
+  Total time: 6180.2s
+  DATA line (proved): 2, 4, 6, 9, 12, 15, 19, 24, 30, 34, 40, 47, 56, 61, 69, 78
