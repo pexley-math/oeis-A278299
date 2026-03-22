@@ -16,8 +16,6 @@ Three types of impossibility argument are used:
 
 **2. Contact bound (pigeonhole).** Each color i must be edge-adjacent to all n-1 other colors. A cell has at most 4 edge-neighbours, so a color with q cells has degree sum at most 4q. To achieve n-1 distinct adjacencies requires degree sum >= n-1, giving q >= ceil((n-1)/4). Therefore k >= n * ceil((n-1)/4). Equivalently: with k cells and n colors, at least one color has at most floor(k/n) cells. If floor(k/n) * 4 < n-1, that color cannot be adjacent to all others.
 
-**3. Interior edge counting.** For larger n, neither bound alone suffices. We analyse the interior grid structure, counting how many interior edges are consumed by small-small, small-large, and large-large colour pairs, and show the total exceeds the available interior edges.
-
 Each proof below establishes both directions: impossibility of k-1 (lower bound) and construction of k (upper bound).
 
 ---
@@ -114,9 +112,7 @@ A 69-cell polyomino with a valid 16-coloring exists where all 120 color pairs ar
 
 For k = 76 cells: C(17,2) = 136 edges required.
 
-Minimum perimeter for 76 cells: R + C = 18 gives 9x9 = 81, so p_min = 36. Maximum edges: (304 - 36) / 2 = 134 < 136. Edge bound gives a(17) > 76 directly.
-
-
+Minimum perimeter for 76 cells: R + C = 18 gives 9x9 = 81, so p_min = 36. Maximum edges: (304 - 36) / 2 = 134 < 136. Edge bound gives a(17) > 76 directly. **QED** (lower bound).
 
 ### Upper bound: a(17) <= 77
 
@@ -137,7 +133,5 @@ Since **16 < 17**, no valid 18-coloring exists on 89 cells. **QED** (lower bound
 ### Upper bound: a(18) <= 90
 
 With k = 90 = 18 * 5 cells, each color gets exactly 5 cells, and 5 * 4 = 20 >= 17 neighbour slots suffice. A valid 90-cell polyomino with proper 18-coloring exists where all C(18,2) = 153 pairs are edge-adjacent. Solution verified independently. See `data/a18-k90-solution.json`. **QED.**
-
----
 
 ---
