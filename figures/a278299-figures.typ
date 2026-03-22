@@ -28,8 +28,7 @@
 #v(0.3em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(12) = 40$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(12) = 40$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[5 \u{00D7} 8 bounding box, 66 color pairs. Edge bound: 65 < 66]
 ]
@@ -87,8 +86,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(13) = 46$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(13) = 46$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[7 \u{00D7} 7 bounding box, 78 color pairs. CP-SAT UNSAT: 11 shapes infeasible]
 ]
@@ -155,8 +153,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(14) = 56$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(14) = 56$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[7 \u{00D7} 8 bounding box, 91 color pairs. Contact bound: 12 < 13]
 ]
@@ -230,8 +227,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(15) = 61$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(15) = 61$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[7 \u{00D7} 9 bounding box, 105 color pairs. Edge bound: 104 < 105]
 ]
@@ -312,8 +308,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(16) = 69$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(16) = 69$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[8 \u{00D7} 10 bounding box, 120 color pairs. Edge bound: 119 < 120]
 ]
@@ -411,8 +406,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(17) = 77$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(17) = 77$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[8 \u{00D7} 10 bounding box, 136 color pairs. CP-SAT UNSAT: 28 shapes infeasible]
 ]
@@ -510,8 +504,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(18) = 90$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(18) = 90$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[9 \u{00D7} 10 bounding box, 153 color pairs. Contact bound: 16 < 17]
 ]
@@ -619,8 +612,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(19) = 97$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(19) = 97$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[10 \u{00D7} 12 bounding box, 171 color pairs. CP-SAT zero-slack: 28 shapes infeasible]
 ]
@@ -758,8 +750,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(20) = 108$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(20) = 108$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[11 \u{00D7} 13 bounding box, 190 color pairs. Interior edge counting: 85 > 78]
 ]
@@ -920,8 +911,7 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(21) = 119$]
-  #text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(21) = 119$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
   #text(size: 8pt)[11 \u{00D7} 13 bounding box, 210 color pairs. Interior edge sum: 144 > 142]
 ]
@@ -1079,9 +1069,6 @@
 )
 ]
 ]
-#v(0.5em)
-#v(0.5em)
-#line(length: 100%, stroke: 0.5pt)
 #v(0.5em)
 #line(length: 100%, stroke: 0.5pt)
 #v(0.3em)
