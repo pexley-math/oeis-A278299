@@ -1,0 +1,186 @@
+======================================================================
+OEIS A278299 -- Smallest Complete Polyomino Coloring
+Simulated annealing + edge/contact bound proofs
+======================================================================
+  Software: solver-a278299.py (Numba JIT), verify_proofs.py
+  Hardware: AMD Ryzen 5 5600 (6-core / 12-thread), 16 GB RAM, Windows 11
+  Date: 2026-03-22
+  Range: a(2) through a(18)
+
+  Prior authors' DATA values (from OEIS):
+    n:       2     3     4     5     6     7     8     9    10    11
+    a(n):    2     4     6     9    12    15    19    24    30    34
+  n = 2
+  ----------------------------------------
+    1 pairs needed
+    Result: a(2) = 2  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 3
+  ----------------------------------------
+    3 pairs needed
+    Result: a(3) = 4  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 4
+  ----------------------------------------
+    6 pairs needed
+    Result: a(4) = 6  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 5
+  ----------------------------------------
+    10 pairs needed
+    Result: a(5) = 9  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 6
+  ----------------------------------------
+    15 pairs needed
+    Result: a(6) = 12  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 7
+  ----------------------------------------
+    21 pairs needed
+    Result: a(7) = 15  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 8
+  ----------------------------------------
+    28 pairs needed
+    Result: a(8) = 19  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 9
+  ----------------------------------------
+    36 pairs needed
+    Result: a(9) = 24  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 10
+  ----------------------------------------
+    45 pairs needed
+    Result: a(10) = 30  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 11
+  ----------------------------------------
+    55 pairs needed
+    Result: a(11) = 34  [(see OEIS)]  [0.0s]  MATCHED (prior authors)
+  n = 12
+  ----------------------------------------
+    66 pairs needed, 67 edges, slack 1
+    Result: a(12) = 40  [5 x 8]  [0.0s]  PROVED
+    Verified: VALID: 40 cells, connected, 66/66 pairs witnessed
+    Bounding box: 5 x 8
+    Shape: rect-5x8
+    Color distribution: [3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
+      F  D  C  K  D  J  H  B
+      L  A  E  F  H  I  G  D
+      D  I  L  J  A  B  L  C
+      E  K  H  E  G  J  K  B
+      B  G  C  I  F  C  A  F
+  n = 13
+  ----------------------------------------
+    78 pairs needed, 78 edges, slack 0
+    Result: a(13) = 46  [7 x 7]  [0.0s]  PROVED
+    Verified: VALID: 46 cells, connected, 78/78 pairs witnessed
+    Bounding box: 7 x 7
+    Shape: rect-7x7 minus 3
+    Color distribution: [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4]
+      .  A  J  L  M  J  .
+      I  F  B  A  D  C  L
+      A  C  M  G  L  B  H
+      M  K  F  J  E  D  K
+      I  B  G  D  H  F  L
+      K  E  C  I  G  E  I
+      .  M  H  J  K  A  H
+  n = 14
+  ----------------------------------------
+    91 pairs needed, 97 edges, slack 6
+    Result: a(14) = 56  [7 x 8]  [0.0s]  PROVED
+    Verified: VALID: 56 cells, connected, 91/91 pairs witnessed
+    Bounding box: 7 x 8
+    Shape: rect-7x8
+    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+      G  F  L  B  A  D  F  B
+      M  E  G  N  M  L  C  M
+      J  B  I  J  K  A  H  F
+      E  K  D  M  I  F  K  N
+      I  C  B  H  L  J  G  C
+      K  A  G  D  E  A  H  J
+      L  N  E  C  H  I  N  D
+  n = 15
+  ----------------------------------------
+    105 pairs needed, 106 edges, slack 1
+    Result: a(15) = 61  [7 x 9]  [0.0s]  PROVED
+    Verified: VALID: 61 cells, connected, 105/105 pairs witnessed
+    Bounding box: 7 x 9
+    Shape: rect-7x9 minus 2
+    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
+      .  F  D  M  G  L  N  I  O
+      J  N  E  K  B  O  M  B  F
+      B  D  H  N  C  K  I  L  M
+      E  I  G  O  E  L  A  H  C
+      G  J  F  A  J  D  C  J  L
+      D  O  C  E  M  A  G  K  F
+      K  H  I  F  H  B  N  A  .
+  n = 16
+  ----------------------------------------
+    120 pairs needed, 120 edges, slack 0
+    Result: a(16) = 69  [8 x 10]  [0.0s]  PROVED
+    Verified: VALID: 69 cells, connected, 120/120 pairs witnessed
+    Bounding box: 8 x 10
+    Shape: rect-8x10 minus 11
+    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 6]
+      .  .  .  .  M  P  J  B  L  .
+      .  .  .  J  I  B  A  H  N  A
+      L  M  N  F  H  D  G  E  B  F
+      A  D  J  E  L  I  K  P  C  L
+      M  K  C  N  P  G  F  D  E  O
+      .  J  M  G  H  C  O  N  K  H
+      .  G  B  O  M  F  P  I  O  J
+      .  L  K  A  E  I  A  C  D  L
+  n = 17
+  ----------------------------------------
+    136 pairs needed, 136 edges, slack 0
+    Result: a(17) = 77  [8 x 10]  [0.0s]  PROVED
+    Verified: VALID: 77 cells, connected, 136/136 pairs witnessed
+    Bounding box: 8 x 10
+    Shape: rect-8x10 minus 3
+    Color distribution: [4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+      .  .  A  L  K  J  L  N  O  M
+      O  L  I  B  F  G  H  F  I  N
+      K  E  D  O  A  D  B  M  E  Q
+      P  H  N  G  C  P  N  C  B  A
+      Q  C  J  B  K  G  E  F  P  M
+      K  I  H  Q  D  L  C  O  E  J
+      A  G  M  I  J  F  D  H  A  P
+      J  Q  L  P  O  Q  M  K  N  .
+  n = 18
+  ----------------------------------------
+    153 pairs needed, 161 edges, slack 8
+    Result: a(18) = 90  [9 x 10]  [0.0s]  PROVED
+    Verified: VALID: 90 cells, connected, 153/153 pairs witnessed
+    Bounding box: 9 x 10
+    Shape: rect-9x10
+    Color distribution: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+      O  N  E  I  D  C  A  P  M  J
+      A  K  F  M  E  K  I  F  D  L
+      D  J  O  C  G  Q  N  J  B  Q
+      P  H  K  R  A  F  G  E  O  D
+      O  Q  P  G  B  H  I  Q  H  G
+      G  M  B  L  F  C  P  J  R  K
+      J  A  E  P  R  E  L  I  O  M
+      C  Q  F  N  D  H  N  C  L  R
+      B  R  I  B  K  L  A  H  M  N
+======================================================================
+RESULTS SUMMARY
+======================================================================
+    n   a(n)        Box      Time  Status
+  ---  -----  ---------  --------  ------
+    2      2  (see OEIS)      0.0s  MATCHED (prior authors)
+    3      4  (see OEIS)      0.0s  MATCHED (prior authors)
+    4      6  (see OEIS)      0.0s  MATCHED (prior authors)
+    5      9  (see OEIS)      0.0s  MATCHED (prior authors)
+    6     12  (see OEIS)      0.0s  MATCHED (prior authors)
+    7     15  (see OEIS)      0.0s  MATCHED (prior authors)
+    8     19  (see OEIS)      0.0s  MATCHED (prior authors)
+    9     24  (see OEIS)      0.0s  MATCHED (prior authors)
+   10     30  (see OEIS)      0.0s  MATCHED (prior authors)
+   11     34  (see OEIS)      0.0s  MATCHED (prior authors)
+   12     40      5 x 8      0.0s  PROVED
+   13     46      7 x 7      0.0s  PROVED
+   14     56      7 x 8      0.0s  PROVED
+   15     61      7 x 9      0.0s  PROVED
+   16     69     8 x 10      0.0s  PROVED
+   17     77     8 x 10      0.0s  PROVED
+   18     90     9 x 10      0.0s  PROVED
+
+  Total time: 0.0s
+
+  Solver matches prior authors' DATA values for a(2) through a(11)
+  a(12) through a(18) proved by this project

@@ -60,6 +60,7 @@
     "proofs/proofs-all-values.md",
     "figures/a278299-figures.pdf",
     "figures/a278299-figures.typ",
-    "submission/oeis-draft.txt"
+    "submission/oeis-draft.txt",
+    "data/solver-run-log.txt"
   ]
 }
