@@ -16,13 +16,13 @@
 %H A278299 Peter Exley, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>.
 
 %e A278299 a(13) = 46:
-%e A278299   . 0 9 B C 9 .
-%e A278299   8 5 1 0 3 2 B
-%e A278299   0 2 C 6 B 1 7
-%e A278299   C A 5 9 4 3 A
-%e A278299   8 1 6 3 7 5 B
-%e A278299   A 4 2 8 6 4 8
-%e A278299   . C 7 9 A 0 7
+%e A278299   . A J L M J .
+%e A278299   I F B A D C L
+%e A278299   A C M G L B H
+%e A278299   M K F J E D K
+%e A278299   I B G D H F L
+%e A278299   K E C I G E I
+%e A278299   . M H J K A H
 
 %Y A278299 Cf. A053439.
 
