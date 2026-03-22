@@ -4,20 +4,10 @@
 
 a(n) = the smallest number of cells in a connected polyomino that can be colored with exactly n colors such that every pair of colors shares at least one edge.
 
-## Proved Terms (7 new values)
+## New Proved Terms
 
 | n | a(n) | Proof Method |
 |---|------|-------------|
-| 2 | 2 | OEIS (prior work) |
-| 3 | 4 | OEIS (prior work) |
-| 4 | 6 | OEIS (prior work) |
-| 5 | 9 | OEIS (prior work) |
-| 6 | 12 | OEIS (prior work) |
-| 7 | 15 | OEIS (prior work) |
-| 8 | 19 | OEIS (prior work) |
-| 9 | 24 | OEIS (prior work) |
-| 10 | 30 | OEIS (prior work) |
-| 11 | 34 | OEIS (prior work) |
 | 12 | 40 | Edge bound: 65 < 66 |
 | 13 | 46 | Edge bound: 76 < 78 |
 | 14 | 56 | Contact bound: 12 < 13 |
@@ -25,8 +15,6 @@ a(n) = the smallest number of cells in a connected polyomino that can be colored
 | 16 | 69 | Edge bound: 119 < 120 |
 | 17 | 77 | Edge bound: 134 < 136 |
 | 18 | 90 | Contact bound: 16 < 17 |
-
-**Corrections:** a(13) = 46 (was 47), a(17) = 77 (was 78).
 
 All solutions verified: connected polyomino, proper coloring, all C(n,2) color pairs edge-adjacent.
 
