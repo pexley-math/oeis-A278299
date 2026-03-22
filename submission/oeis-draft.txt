@@ -21,6 +21,8 @@
 %C A278299 For n == 0 (mod 4) with n <= 16, a(n) = floor((n^2+n+5)/4) (edge bound is tight). Proved for n = 4, 8, 12, 16. - _Peter Exley_, Mar 22 2026
 %C A278299 This sequence is the inverse of the achromatic number problem for grid subgraphs: a(n) = min |V(H)| over connected subgraphs H of the infinite grid with achromatic number psi(H) >= n. - _Peter Exley_, Mar 22 2026
 
+%C A278299 a(13) corrected from 47 to 46, a(17) corrected from 78 to 77. - _Peter Exley_, Mar 22 2026
+
 %H A278299 Peter Exley, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>.
 
 %e A278299 a(13) = 46: A 7 X 7 polyomino (minus 3 corners) with 13 colors where all C(13,2) = 78 color pairs are edge-adjacent. Colors 0-9 shown as 0-9, 10-12 as A-C:
@@ -32,7 +34,7 @@
 %e A278299   A 4 2 8 6 4 8
 %e A278299   . C 7 9 A 0 7
 
-%Y A278299 Cf. A053439, A054925.
+%Y A278299 Cf. A053439.
 
 %K A278299 nonn,more
 
