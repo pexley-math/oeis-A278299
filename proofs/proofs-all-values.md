@@ -1,5 +1,4 @@
 # Formal Proofs: a(12) through a(18) for OEIS A278299
-# (a(19)-a(21) proofs withdrawn -- see notes below each)
 
 ## OEIS A278299
 
@@ -142,9 +141,3 @@ With k = 90 = 18 * 5 cells, each color gets exactly 5 cells, and 5 * 4 = 20 >= 1
 ---
 
 ---
-
-## Note on a(19)-a(21)
-
-a(19) <= 97, a(20) <= 108, a(21) <= 119 are upper bounds only (constructions
-verified but lower bound proofs incomplete or invalidated). See README.md for details.
-Solution files are included in data/ for reference.
