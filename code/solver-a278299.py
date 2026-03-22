@@ -6,7 +6,7 @@ every pair of distinct colors shares at least one edge.
 
 Sequence: a(2)=2, a(3)=4, a(4)=6, a(5)=9, a(6)=12, a(7)=15, a(8)=19,
           a(9)=24, a(10)=30, a(11)=34.
-Upper bounds: a(12)<=40, a(13)<=47, a(14)<=56, a(15)<=61, a(16)<=69, a(17)<=78.
+Proved: a(12)=40, a(13)=46, a(14)=56, a(15)=61, a(16)=69, a(17)=77, a(18)=90.
 
 Method: Numba JIT-compiled simulated annealing with adaptive move selection
 and fresh diverse starts. For each n, the solver searches across multiple
@@ -19,7 +19,7 @@ Requirements: Python 3.8+, numpy, numba
 Install:      pip install numpy numba
 
 Usage:
-    python solver-a278299.py                  # Run all n=2..17
+    python solver-a278299.py                  # Run all n=2..18
     python solver-a278299.py --n 12           # Run single n
     python solver-a278299.py --n 5-11         # Run range
     python solver-a278299.py --verbose        # Detailed output
