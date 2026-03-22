@@ -1,25 +1,87 @@
 {
   "n": 12,
   "k": 40,
-  "pairs": 66,
-  "shape": "rect-5x8",
+  "verified": true,
+  "bounding_box": [
+    5,
+    8
+  ],
   "perimeter": 26,
   "edges": 67,
-  "interior_cells": 18,
-  "bounding_box": [5, 8],
-  "verified": true,
+  "pairs": 66,
+  "slack": 1,
+  "color_distribution": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4
+  ],
+  "shape": "rect-5x8",
   "verification": {
     "proper_coloring": true,
     "violations": 0,
+    "connected": true,
     "pairs_witnessed": 66,
-    "connected": true
+    "pairs_needed": 66
   },
-  "color_distribution": [3, 4, 4, 4, 3, 4, 3, 3, 3, 3, 3, 3],
   "grid": [
-    [ 5,  3,  2, 10,  3,  9,  7,  1],
-    [11,  0,  4,  5,  7,  8,  6,  3],
-    [ 3,  8, 11,  9,  0,  1, 11,  2],
-    [ 4, 10,  7,  4,  6,  9, 10,  1],
-    [ 1,  6,  2,  8,  5,  2,  0,  5]
+    [
+      5,
+      3,
+      2,
+      10,
+      3,
+      9,
+      7,
+      1
+    ],
+    [
+      11,
+      0,
+      4,
+      5,
+      7,
+      8,
+      6,
+      3
+    ],
+    [
+      3,
+      8,
+      11,
+      9,
+      0,
+      1,
+      11,
+      2
+    ],
+    [
+      4,
+      10,
+      7,
+      4,
+      6,
+      9,
+      10,
+      1
+    ],
+    [
+      1,
+      6,
+      2,
+      8,
+      5,
+      2,
+      0,
+      5
+    ]
   ]
 }

@@ -6,6 +6,34 @@
     7,
     8
   ],
+  "perimeter": 30,
+  "edges": 97,
+  "pairs": 91,
+  "slack": 6,
+  "color_distribution": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "shape": "rect-7x8",
+  "verification": {
+    "proper_coloring": true,
+    "violations": 0,
+    "connected": true,
+    "pairs_witnessed": 91,
+    "pairs_needed": 91
+  },
   "coloring": {
     "0,0": 6,
     "0,1": 5,
