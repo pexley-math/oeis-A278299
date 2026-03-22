@@ -30,18 +30,42 @@ a(n) = the smallest number of cells in a connected polyomino that can be colored
 
 All solutions verified: connected polyomino, proper coloring, all C(n,2) color pairs edge-adjacent.
 
-## Proof Methods
+## Method
 
-**Edge bound.** A polyomino with k cells has at most (4k - p_min)/2 internal edges. If this is less than C(n,2), no valid coloring exists on k cells.
+Simulated annealing with Numba JIT compilation. For each n, the solver searches across multiple grid dimensions and random seeds to find the smallest valid polyomino. Lower bounds proved by edge bound (max internal edges < required pairs) or contact bound (pigeonhole on cells per color).
 
-**Contact bound (pigeonhole).** With k cells and n colors, some color has at most floor(k/n) cells. Its degree sum is at most 4*floor(k/n). If this is less than n-1, that color cannot be adjacent to all others.
+## Running the Solver
+
+**Requirements:** Python 3.8+, numpy, numba
+
+```bash
+pip install numpy numba
+```
+
+```bash
+# Run all terms n=2..18
+python code/solver-a278299.py
+
+# Run specific values
+python code/solver-a278299.py --n 12
+python code/solver-a278299.py --n 12-18
+
+# Save results to JSON with log
+python code/solver-a278299.py --json results.json --log run.txt --verbose
+```
+
+**Verify all proofs** (no dependencies required):
+
+```bash
+python code/verify_proofs.py
+```
 
 ## Files
 
 | File | Description |
 |------|-------------|
-| `code/solver-a278299.py` | Simulated annealing solver for finding solutions |
-| `code/verify_proofs.py` | Self-contained proof verification script (no dependencies) |
+| `code/solver-a278299.py` | Simulated annealing solver (Numba JIT) |
+| `code/verify_proofs.py` | Self-contained proof verification (no dependencies) |
 | `proofs/proofs-all-values.md` | Formal proofs for all 7 values |
 | `figures/a278299-figures.pdf` | Colored solution grids |
 | `figures/a278299-figures.typ` | Typst source for figures |
@@ -61,8 +85,7 @@ Known terms a(2) through a(11) were found by Alec Jones, Peter Kagey, and Ryan L
 
 ## Hardware
 
-- AMD Ryzen 5 5600 (6-core / 12-thread), 16 GB RAM
-- Python 3 + OR-Tools CP-SAT
+AMD Ryzen 5 5600 (6-core / 12-thread), 16 GB RAM.
 
 ## License
 
