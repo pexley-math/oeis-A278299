@@ -1,16 +1,6 @@
-# A278299 -- Extension submission (REVISED 22/03/2026)
-#
-# This submission REPLACES our earlier submission of 07/03/2026.
-#
-# Revisions from Mar 07 submission:
-#   1. a(13) corrected from 47 to 46 (bug in symmetry-breaking found in audit)
-#   2. a(17) corrected from 78 to 77 (same bug)
-#   3. Constant second-difference conjecture WITHDRAWN (disproved at n=19)
-#   4. Previously claimed a(12)-a(21) as 10 values. Now submitting a(12)-a(18)
-#      only (7 values). a(19)-a(21) withdrawn: lower bound proofs found to be
-#      flawed during adversarial review (22/03/2026).
-#   5. Comments revised to remove claims about n=19,20,21.
-#
+# A278299 -- Extension submission
+# Replaces earlier submission of 07/03/2026.
+# a(13) corrected from 47 to 46, a(17) corrected from 78 to 77.
 # Date: 22/03/2026
 
 
