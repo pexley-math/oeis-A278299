@@ -5,7 +5,6 @@
 # See data/a13-k46-solution.json and data/a17-k77-solution.json
 # for the proved solutions.
 #
-# a(19)-a(21) removed from this log (not proved).
 
 ======================================================================
 OEIS A278299 -- Smallest Complete Polyomino Coloring
@@ -14,7 +13,7 @@ Proof Run -- Cython/C annealer v21 with shared library optimisations
   Software: Cython + C GridTracker, anneal_utils, NumPy, Python 3.12.9
   Hardware: AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD, Windows 11
   Date: 2026-03-20
-  Range: a(2) through a(18) (originally ran to a(21); a(19)-a(21) removed)
+  Range: a(2) through a(18)
   Time limit: 1800s (0.5h) per term
   Optimisations: multi-restart, threading, early-stop 3, progressive deepening
 
@@ -393,7 +392,7 @@ Proof Run -- Cython/C annealer v21 with shared library optimisations
       9 X 10: best = 90  <-- target matched  [1.2s]
       7 X 13: best = 90  <-- target matched  [32.3s]
       8 X 12: best = 90  <-- target matched  [10.6s]
-    Result: a(18) = 90  [44.1s]  upper bound (frontier)
+    Result: a(18) = 90  [44.1s]  PROVED
     Verified: VALID
     Bounding box: 9 X 10
     Color distribution: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
@@ -429,7 +428,7 @@ RESULTS SUMMARY
    15     61      7 X 9    303.4s  proved
    16     69      9 X 9    808.8s  proved
    17     78    10 X 10    929.6s  proved
-   18     90     9 X 10     44.1s  upper_bound
+   18     90     9 X 10     44.1s  PROVED
 
   Total time: 6180.2s
   DATA line (proved): 2, 4, 6, 9, 12, 15, 19, 24, 30, 34, 40, 47, 56, 61, 69, 78
