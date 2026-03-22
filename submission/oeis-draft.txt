@@ -15,7 +15,7 @@
 
 %H A278299 Peter Exley, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>.
 
-%e A278299 a(13) = 46: A 7 X 7 polyomino (minus 3 corners) with 13 colors where all C(13,2) = 78 color pairs are edge-adjacent. Colors 0-9 shown as 0-9, 10-12 as A-C:
+%e A278299 a(13) = 46:
 %e A278299   . 0 9 B C 9 .
 %e A278299   8 5 1 0 3 2 B
 %e A278299   0 2 C 6 B 1 7
