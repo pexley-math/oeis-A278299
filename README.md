@@ -1,26 +1,42 @@
 # OEIS A278299 -- Smallest Complete Polyomino Coloring
 
-**Sequence:** [A278299](https://oeis.org/A278299)
+Solver code, data, and figures for [OEIS A278299](https://oeis.org/A278299).
 
-a(n) = the smallest number of cells in a connected polyomino that can be colored with exactly n colors such that every pair of colors shares at least one edge.
+## The Problem
 
-## New Proved Terms
+a(n) = the smallest number of cells in a connected polyomino that can be
+colored with exactly n colors such that every pair of colors shares at
+least one edge.
 
-| n | a(n) | Proof Method |
-|---|------|-------------|
-| 12 | 40 | Edge bound: 65 < 66 |
-| 13 | 46 | Edge bound: 76 < 78 |
-| 14 | 56 | Contact bound: 12 < 13 |
-| 15 | 61 | Edge bound: 104 < 105 |
-| 16 | 69 | Edge bound: 119 < 120 |
-| 17 | 77 | Edge bound: 134 < 136 |
-| 18 | 90 | Contact bound: 16 < 17 |
+## Results
 
-All solutions verified: connected polyomino, proper coloring, all C(n,2) color pairs edge-adjacent.
+**Known terms (proved by prior authors):**
+
+| n | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| a(n) | 2 | 4 | 6 | 9 | 12 | 15 | 19 | 24 | 30 | 34 |
+
+**New proved terms (this work):**
+
+| n | 12 | 13 | 14 | 15 | 16 | 17 | 18 |
+|---|---|---|---|---|---|---|---|
+| a(n) | 40 | 46 | 56 | 61 | 69 | 77 | 90 |
+| Proof | Edge | Edge | Contact | Edge | Edge | Edge | Contact |
+
+All 7 values proved by edge bound or contact bound (pigeonhole). All
+solutions verified: connected polyomino, proper coloring, all C(n,2)
+color pairs edge-adjacent.
 
 ## Method
 
-Simulated annealing with Numba JIT compilation. For each n, the solver searches across multiple grid dimensions and random seeds to find the smallest valid polyomino. Lower bounds proved by edge bound (max internal edges < required pairs) or contact bound (pigeonhole on cells per color).
+Constructive upper bounds found by simulated annealing (Numba JIT). Lower
+bounds proved by two methods:
+
+- **Edge bound:** A polyomino with k cells has at most (4k - p_min)/2
+  internal edges. If this is less than C(n,2), no valid coloring exists.
+- **Contact bound (pigeonhole):** With k cells and n colors, some color
+  has at most floor(k/n) cells. If 4*floor(k/n) < n-1, that color cannot
+  be adjacent to all others.
 
 ## Running the Solver
 
@@ -28,9 +44,7 @@ Simulated annealing with Numba JIT compilation. For each n, the solver searches 
 
 ```bash
 pip install numpy numba
-```
 
-```bash
 # Run all terms n=2..18
 python code/solver-a278299.py
 
@@ -38,8 +52,8 @@ python code/solver-a278299.py
 python code/solver-a278299.py --n 12
 python code/solver-a278299.py --n 12-18
 
-# Save results to JSON with log
-python code/solver-a278299.py --json results.json --log run.txt --verbose
+# Save results as JSON with log file
+python code/solver-a278299.py --json results.json --verbose --log run.txt
 ```
 
 **Verify all proofs** (no dependencies required):
@@ -67,9 +81,14 @@ python code/verify_proofs.py
 | `data/solver-results.json` | Full solver run data |
 | `submission/oeis-draft.txt` | OEIS submission text |
 
-## Prior Art
+## Prior Art and Acknowledgments
 
-Known terms a(2) through a(11) were found by Alec Jones, Peter Kagey, and Ryan Lee.
+The sequence A278299 was created by Peter Kagey (2016). Terms a(2) through
+a(11) were proved by Alec Jones, Peter Kagey, and Ryan Lee. This work extends
+the sequence with 7 new proved terms a(12) through a(18).
+
+This work was inspired by the [OEIS](https://oeis.org/) and the community of
+contributors who maintain it.
 
 ## Hardware
 
@@ -77,8 +96,11 @@ AMD Ryzen 5 5600 (6-core / 12-thread), 16 GB RAM.
 
 ## License
 
-CC-BY-4.0. See [LICENSE](LICENSE).
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) -- Peter Exley, 2026.
 
-## Author
+This work is freely available. If you find it useful, a citation or acknowledgment
+is appreciated but not required.
 
-Peter Exley, March 2026
+## Links
+
+- **OEIS page:** https://oeis.org/A278299
