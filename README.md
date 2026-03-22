@@ -52,8 +52,6 @@ All solutions verified: connected polyomino, proper coloring, all C(n,2) color p
 | `data/a16-k69-solution.json` | Verified 16-color solution (69 cells) |
 | `data/a17-k77-solution.json` | Verified 17-color solution (77 cells) |
 | `data/a18-k90-solution.json` | Verified 18-color solution (90 cells) |
-| `data/a13-proof-results.json` | CP-SAT supplementary confirmation for a(13) |
-| `data/a17-proof-results.json` | CP-SAT supplementary confirmation for a(17) |
 | `data/solver-results.json` | Full solver run data |
 | `submission/oeis-draft.txt` | OEIS submission text |
 

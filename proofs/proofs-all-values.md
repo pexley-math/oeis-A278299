@@ -42,13 +42,13 @@ A 5x8 rectangular polyomino (40 cells) with a valid 12-coloring exists where all
 
 ## Theorem 2: a(13) = 46
 
-### Lower bound: a(13) > 45 (CP-SAT exhaustive UNSAT)
+### Lower bound: a(13) > 45 (edge bound)
 
 For k = 45 cells: C(13,2) = 78 edges required.
 
 Minimum perimeter for 45 cells: R + C = 14 (7x7 = 49, 6x8 = 48), p_min = 28. Maximum edges: (180 - 28)/2 = 76 < 78. This gives a(13) > 45 by edge bound alone.
 
-Additionally, CP-SAT was used to prove all 11 minimal-perimeter shapes for k = 46 at perimeter 28 are INFEASIBLE with n = 14 colors (which would be needed if a(13) < 46). All 11 shapes returned INFEASIBLE in 0.03-0.04s each. See `research/a13-proof-results.json`. **QED** (lower bound).
+**QED** (lower bound).
 
 ### Upper bound: a(13) <= 46
 
@@ -110,13 +110,13 @@ A 69-cell polyomino with a valid 16-coloring exists where all 120 color pairs ar
 
 ## Theorem 6: a(17) = 77
 
-### Lower bound: a(17) > 76 (CP-SAT exhaustive UNSAT)
+### Lower bound: a(17) > 76 (edge bound)
 
 For k = 76 cells: C(17,2) = 136 edges required.
 
 Minimum perimeter for 76 cells: R + C = 18 gives 9x9 = 81, so p_min = 36. Maximum edges: (304 - 36) / 2 = 134 < 136. Edge bound gives a(17) > 76 directly.
 
-CP-SAT confirmed: all 28 minimal-perimeter shapes for k = 77 with n = 18 colors are INFEASIBLE (0.1-0.15s each). See `research/a17-proof-results.json`. **QED** (lower bound).
+
 
 ### Upper bound: a(17) <= 77
 

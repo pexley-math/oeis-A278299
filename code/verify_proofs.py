@@ -297,10 +297,7 @@ def main():
     for n in [14, 18]:
         verify_contact_bound(n, VALUES[n])
 
-    # CP-SAT proofs (supplementary, edge bound already proves these)
-    for n in [13, 17]:
-        print(f"  a({n}) > {VALUES[n]-1}: edge bound proves this; "
-              f"CP-SAT confirms (see proof-results JSON)")
+
 
 
     # --- Upper bounds ---
