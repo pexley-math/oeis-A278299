@@ -1,4 +1,5 @@
-# Formal Proofs: a(12) through a(21) for OEIS A278299
+# Formal Proofs: a(12) through a(18) for OEIS A278299
+# (a(19)-a(21) proofs withdrawn -- see notes below each)
 
 ## OEIS A278299
 
@@ -142,15 +143,17 @@ With k = 90 = 18 * 5 cells, each color gets exactly 5 cells, and 5 * 4 = 20 >= 1
 
 ## Theorem 8: a(19) = 97
 
-### Lower bound: a(19) > 96 (CP-SAT zero-slack UNSAT)
+### Lower bound: a(19) > 96 (INCOMPLETE -- gap identified 22/03/2026)
 
 For k = 96 cells: C(19,2) = 171 edges required.
 
 Minimum perimeter for 96 cells: 8x12 = 96, p = 40. R + C = 20. Maximum edges: (384 - 40) / 2 = 172. Since 172 > 171, the edge bound does NOT eliminate k = 96. The slack is exactly 1.
 
-However, this zero-slack condition is extremely constraining. CP-SAT was applied to all 28 minimal-perimeter shapes (perimeter 40). Every single shape was proved INFEASIBLE in under 0.1 seconds (most in 0.0s). The zero-slack forces every edge to be a distinct-colour boundary -- a condition so tight that no valid coloring exists.
+CP-SAT was applied to all 28 minimal-perimeter shapes (perimeter 40). Every shape was proved INFEASIBLE in under 0.1 seconds (most in 0.0s).
 
-Non-minimal perimeter shapes have even fewer edges, so they are also impossible. **QED** (lower bound).
+**GAP:** The original proof claimed "non-minimal perimeter shapes have even fewer edges, so they are also impossible." This is INCORRECT for perimeter 42: shapes with perimeter 42 have exactly (384-42)/2 = 171 = C(19,2) edges (zero slack, not negative). These shapes were NOT tested. Perimeter >= 44 shapes have edges < 171, so those ARE impossible by edge count.
+
+**Status:** a(19) > 96 is proved for perimeter-40 shapes (28 tested, all INFEASIBLE) and perimeter >= 44 shapes (edge bound). Perimeter-42 shapes remain untested. Fix in progress.
 
 ### Upper bound: a(19) <= 97
 
@@ -158,50 +161,42 @@ A 97-cell polyomino with a valid 19-coloring exists where all 171 color pairs ar
 
 ---
 
-## Theorem 9: a(20) = 108
+## ~~Theorem 9~~ Upper bound: a(20) <= 108
 
-### Lower bound: a(20) > 107 (interior edge counting)
+**STATUS: Lower bound proof INVALIDATED 22/03/2026. a(20) > 107 is NOT proved.**
 
-For full derivation, see `proof-a20-a21.md`, Theorem 1.
+The interior edge counting argument contained three fatal flaws:
+1. **Duplicate edges:** I_I <= C(13,2) = 78 is wrong. The problem allows duplicate edges, so I_I can exceed 78. The "contradiction" 85 > 78 is not a contradiction.
+2. **Border accounting:** Tight cells on the IG border have < 4 interior neighbours. Corrected I_I >= 73, not 85.
+3. **a=0 not forced:** The slack distribution allows a > 0.
 
-**Summary.** For k = 107 cells with n = 20 colors:
-- Colour distribution: 13 small (5 cells), 7 large (6 cells).
-- Minimum perimeter is 42 (shapes with R + C = 21). Maximum edges = (428 - 42)/2 = 193 >= C(20,2) = 190, so the edge bound does not eliminate k = 107.
-- Shape enumeration reduces to 3 surviving shapes in the (5, 32, 70) family (boundary cell count = 37 forces this family; other families have boundary = 36 or 35, contradicting the required 37).
-- With a = 0 forced (all 13 small colours have degree sum exactly 19), the interior grid (7 x 10 = 70 cells, 123 edges) must accommodate:
-  - 52 tight interior cells (4 cells per small color x 13)
-  - Each tight cell has 4 interior neighbours, giving 2 * I_I + I_N = 208
-  - Combined with I_I + I_N <= 123, this yields **I_I >= 85**
-- But tight-tight edges represent distinct small-small pairs: I_I <= C(13,2) = **78**.
-- Since **85 > 78**, contradiction. **QED** (lower bound).
+See `research/future-interior-edge-technique.md` for full analysis.
 
 ### Upper bound: a(20) <= 108
 
 A 108-cell polyomino (11 x 13 bounding box) with a valid 20-coloring exists where all C(20,2) = 190 color pairs are edge-adjacent. Solution verified independently by pure Python (proper coloring, connectivity, all 190 pairs witnessed). See `data/a20-k108-solution.json`. **QED.**
 
+a(20) = 108 is strongly supported by computational evidence (annealer never found k < 108 across thousands of seeds) but not proved.
+
 ---
 
-## Theorem 10: a(21) = 119
+## ~~Theorem 10~~ Upper bound: a(21) <= 119
 
-### Lower bound: a(21) > 118 (interior edge sum contradiction)
+**STATUS: Lower bound proof INVALIDATED 22/03/2026. a(21) > 118 is NOT proved.**
 
-For full derivation, see `proof-a20-a21.md`, Theorem 2.
+The interior edge sum argument contained fatal flaws:
+1. **Arithmetic error:** The claim "total interior edges needed = 144" is wrong. Correct derivation gives 142, which equals the available edges. No contradiction.
+2. **Duplicate edges:** E_SS = 28 and E_SL = 104 are correctly forced (zero waste for small colours). But the total interior edges = 142 always (identity, not constraint).
 
-**Summary.** For k = 118 cells with n = 21 colors:
-- Colour distribution: 8 small (5 cells), 13 large (6 cells).
-- Minimum perimeter is 44 (R + C = 22). Interior grid: 8 x 10 = 80 cells, 142 edges.
-- Preliminary: a(21) > 115 by edge bound (max edges 208 < 210).
-- a(21) > 116 and > 117 by corrected border counting: forced equation s_c = 4 (all 4 interior corners must be small cells), leading to geometric contradictions.
-- For k = 118:
-  - Small interior = 40 cells, large interior = 40 cells.
-  - Degree sum analysis forces E_SS = C(8,2) = 28 exactly, and E_SL = 104 exactly.
-  - Total required interior edges = E_SS + E_SL_int + E_LL_int = **144**.
-  - Available interior edges in 8 x 10 grid = **142**.
-  - Since **144 > 142**, contradiction. **QED** (lower bound).
+The border counting argument for a(21) > 116 and > 117 (s_c = 4 forced) may still be valid but has not been independently verified. a(21) > 115 by edge bound is solid.
+
+See `research/future-interior-edge-technique.md` for full analysis.
 
 ### Upper bound: a(21) <= 119
 
 A 119-cell polyomino (11 x 13 bounding box) with a valid 21-coloring exists where all C(21,2) = 210 color pairs are edge-adjacent. Solution verified independently by pure Python (proper coloring, connectivity, all 210 pairs witnessed). See `data/a21-k119-solution.json`. **QED.**
+
+a(21) = 119 is strongly supported by computational evidence but not proved.
 
 ---
 
@@ -216,9 +211,9 @@ A 119-cell polyomino (11 x 13 bounding box) with a valid 21-coloring exists wher
 | 16 | 69 | Edge bound | 119 < 120 | a16-k69-solution.json |
 | 17 | 77 | Edge bound + CP-SAT UNSAT | 134 < 136 + all shapes infeasible | a17-k77-solution.json |
 | 18 | 90 | Contact bound (pigeonhole) | 16 < 17 | a18-k90-solution.json |
-| 19 | 97 | CP-SAT zero-slack UNSAT | 28/28 shapes infeasible at slack 1 | a19-k97-solution.json |
-| 20 | 108 | Interior edge counting | I_I >= 85 > 78 = C(13,2) | a20-k108-solution.json |
-| 21 | 119 | Interior edge sum | 144 > 142 | a21-k119-solution.json |
+| 19 | 97 | **GAP** -- CP-SAT on p=40 only | p=42 shapes untested | a19-k97-solution.json |
+| 20 | <=108 | **INVALID** -- interior edge counting | Proof flawed (duplicates, border) | a20-k108-solution.json |
+| 21 | <=119 | **INVALID** -- interior edge sum | Proof flawed (144 should be 142) | a21-k119-solution.json |
 
 ## Verification
 

@@ -19,7 +19,7 @@
   #v(0.3em)
   #text(size: 10pt)[Minimum cells in a polyomino with $n$-coloring where every color pair shares an edge]
   #v(0.2em)
-  #text(size: 10pt)[Proved values: $a(12) = 40$, $a(13) = 46$, $a(14) = 56$, $a(15) = 61$, $a(16) = 69$, $a(17) = 77$, $a(18) = 90$, $a(19) = 97$, $a(20) = 108$, $a(21) = 119$]
+  #text(size: 10pt)[Proved: $a(12) = 40$, $a(13) = 46$, $a(14) = 56$, $a(15) = 61$, $a(16) = 69$, $a(17) = 77$, $a(18) = 90$. Upper bounds: $a(19) \leq 97$, $a(20) \leq 108$, $a(21) \leq 119$]
   #v(0.2em)
   #text(size: 8pt, style: "italic")[Computed by Peter Exley, March 2026]
 ]
@@ -88,7 +88,7 @@
 #align(center)[
   #text(size: 11pt, weight: "bold")[$a(13) = 46$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
-  #text(size: 8pt)[7 \u{00D7} 7 bounding box, 78 color pairs. CP-SAT UNSAT: 11 shapes infeasible]
+  #text(size: 8pt)[7 \u{00D7} 7 bounding box, 78 color pairs. Edge bound: 76 < 78]
 ]
 #v(0.2em)
 #align(center)[
@@ -408,7 +408,7 @@
 #align(center)[
   #text(size: 11pt, weight: "bold")[$a(17) = 77$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
   #h(0.5em)
-  #text(size: 8pt)[8 \u{00D7} 10 bounding box, 136 color pairs. CP-SAT UNSAT: 28 shapes infeasible]
+  #text(size: 8pt)[8 \u{00D7} 10 bounding box, 136 color pairs. Edge bound: 134 < 136]
 ]
 #v(0.2em)
 #align(center)[
@@ -612,9 +612,9 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(19) = 97$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(19) = 97$]#text(size: 8pt, fill: rgb("#E67E22"), weight: "bold")[ \[UPPER BOUND\]]
   #h(0.5em)
-  #text(size: 8pt)[10 \u{00D7} 12 bounding box, 171 color pairs. CP-SAT zero-slack: 28 shapes infeasible]
+  #text(size: 8pt)[10 \u{00D7} 12 bounding box, 171 color pairs. Computational upper bound]
 ]
 #v(0.2em)
 #align(center)[
@@ -750,9 +750,9 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(20) = 108$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(20) = 108$]#text(size: 8pt, fill: rgb("#E67E22"), weight: "bold")[ \[UPPER BOUND\]]
   #h(0.5em)
-  #text(size: 8pt)[11 \u{00D7} 13 bounding box, 190 color pairs. Interior edge counting: 85 > 78]
+  #text(size: 8pt)[11 \u{00D7} 13 bounding box, 190 color pairs. Computational upper bound]
 ]
 #v(0.2em)
 #align(center)[
@@ -911,9 +911,9 @@
 #v(0.5em)
 #block(breakable: false, width: 100%)[
 #align(center)[
-  #text(size: 11pt, weight: "bold")[$a(21) = 119$]#text(size: 8pt, fill: rgb("#27AE60"), weight: "bold")[ \[PROVED\]]
+  #text(size: 11pt, weight: "bold")[$a(21) = 119$]#text(size: 8pt, fill: rgb("#E67E22"), weight: "bold")[ \[UPPER BOUND\]]
   #h(0.5em)
-  #text(size: 8pt)[11 \u{00D7} 13 bounding box, 210 color pairs. Interior edge sum: 144 > 142]
+  #text(size: 8pt)[11 \u{00D7} 13 bounding box, 210 color pairs. Computational upper bound]
 ]
 #v(0.2em)
 #align(center)[

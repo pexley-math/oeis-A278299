@@ -29,7 +29,7 @@ a(n) = the smallest number of cells in a connected polyomino that can be colored
 | 20 | 108 | Interior edge counting (I_I >= 85 > 78) |
 | 21 | 119 | Interior edge sum (144 > 142) |
 
-a(12)-a(21) are 10 new proved values from this project.
+a(12)-a(18) are 7 new proved values from this project. a(19)-a(21) are upper bounds (proofs under review).
 
 **Corrections:** a(13) = 46 (was listed as 47), a(17) = 77 (was listed as 78).
 
