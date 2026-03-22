@@ -3,15 +3,15 @@
 # a(13) and a(17) improved from upper bounds (47, 78) to proved values (46, 77).
 # Date: 22/03/2026
 
-
 %S A278299 2,4,6,9,12,15,19,24,30,34,40,46,56,61,69,77,90
 
-%C A278299 Lower bound: a(n) >= max(floor((n^2+n+5)/4), n*ceiling((n-1)/4)). The first term (edge bound) counts minimum internal edges needed; the second (contact bound) counts minimum cells per color. - _Peter Exley_, Mar 22 2026
-%C A278299 For n == 2 (mod 4), a(n) = n*ceiling((n-1)/4) (contact bound is tight). Proved for n = 2, 6, 10, 14, 18. - _Peter Exley_, Mar 22 2026
-%C A278299 For n == 0 (mod 4) with n <= 16, a(n) = floor((n^2+n+5)/4) (edge bound is tight). Proved for n = 4, 8, 12, 16. - _Peter Exley_, Mar 22 2026
-%C A278299 This sequence is the inverse of the achromatic number problem for grid subgraphs: a(n) = min |V(H)| over connected subgraphs H of the infinite grid with achromatic number psi(H) >= n. - _Peter Exley_, Mar 22 2026
-
-%C A278299 a(13) improved from upper bound 47 to proved value 46, a(17) from 78 to 77. - _Peter Exley_, Mar 22 2026
+%C A278299 From _Peter Exley_, Mar 22 2026: (Start)
+%C A278299 Lower bound: a(n) >= max(floor((n^2+n+5)/4), n*ceiling((n-1)/4)). The first term (edge bound) counts minimum internal edges needed; the second (contact bound) counts minimum cells per color.
+%C A278299 For n == 2 (mod 4), a(n) = n*ceiling((n-1)/4) (contact bound is tight). Proved for n = 2, 6, 10, 14, 18.
+%C A278299 For n == 0 (mod 4) with n <= 16, a(n) = floor((n^2+n+5)/4) (edge bound is tight). Proved for n = 4, 8, 12, 16.
+%C A278299 This sequence is the inverse of the achromatic number problem for grid subgraphs: a(n) = min |V(H)| over connected subgraphs H of the infinite grid with achromatic number psi(H) >= n.
+%C A278299 a(13) improved from upper bound 47 to proved value 46, a(17) from 78 to 77.
+%C A278299 (End)
 
 %H A278299 Peter Exley, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>.
 
