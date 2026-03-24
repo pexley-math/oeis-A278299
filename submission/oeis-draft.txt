@@ -13,7 +13,7 @@
 %C A278299 a(13) improved from upper bound 47 to proved value 46, a(17) from 78 to 77.
 %C A278299 (End)
 
-%H A278299 Peter Exley, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>.
+%H A278299 _Peter Exley_, <a href="https://github.com/pexley-math/oeis-A278299">Solver code, solutions, and proofs</a>, GitHub.
 
 %e A278299 a(13) = 46:
 %e A278299       +---+---+---+---+---+
